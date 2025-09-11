@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import LazyImage from "@/components/LazyImage";
 import heroImage from "@/assets/hero-makhana.jpg";
 
 const Hero = () => {
@@ -8,10 +9,12 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <LazyImage
           src={heroImage}
           alt="Premium Bihar Makhana"
           className="w-full h-full object-cover"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-heritage/80 via-heritage/60 to-transparent"></div>
       </div>
