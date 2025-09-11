@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Users, Trophy } from "lucide-react";
 import biharFieldsImage from "@/assets/bihar-fields.jpg";
@@ -92,8 +93,10 @@ const About = () => {
                 alt="Bihar Makhana Fields"
                 className="rounded-lg shadow-xl"
               />
-            </div>
-          </div>
+      </div>
+
+      <Footer />
+    </div>
         </div>
       </section>
 
