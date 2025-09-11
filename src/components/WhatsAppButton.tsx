@@ -6,6 +6,17 @@ const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   
+  // Prevent multiple instances
+  React.useEffect(() => {
+    // Remove any existing whatsapp buttons to prevent duplicates
+    const existingButtons = document.querySelectorAll('[data-whatsapp-button]');
+    existingButtons.forEach((button, index) => {
+      if (index > 0) {
+        button.remove();
+      }
+    });
+  }, []);
+  
   // Mobile number from footer
   const phoneNumber = "+91 9953240031";
   
@@ -28,10 +39,19 @@ const WhatsAppButton = () => {
     }
   }, [isOpen]);
 
+  // Prevent duplicate rendering
+  if (document.getElementById('whatsapp-button-main')) {
+    return null;
+  }
+
   return (
     <>
       {/* WhatsApp Floating Button */}
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
+      <div 
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50"
+        data-whatsapp-button="main"
+        id="whatsapp-button-main"
+      >
         <div className="relative">
           {/* Pulse animation ring */}
           <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-20"></div>
