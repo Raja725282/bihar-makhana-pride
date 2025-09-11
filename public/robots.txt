@@ -1,3 +1,16 @@
+User-agent: *
+Allow: /
+
+# High-priority pages for crawling
+Allow: /products
+Allow: /bulk-order
+Allow: /export-services
+Allow: /agriculture
+Allow: /global
+Allow: /farmers
+Allow: /quality-assurance
+
+# Allow all major search engines
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +23,30 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Slurp
 Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://biharmakhana.com/sitemap.xml
+
+# Host preference (remove www if using non-www)
+Host: biharmakhana.com

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import SEO from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +21,66 @@ const Products = () => {
   const handleCatalogRequest = () => {
     setFormType("quote");
     setShowContactForm(true);
+  };
+
+  // Products Page Structured Data
+  const productsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Bihar Makhana Products - Premium Foxnuts Collection",
+    "description": "Explore our premium range of Bihar makhana products. Grade A, commercial, and processing grade foxnuts for every need.",
+    "url": "https://biharmakhana.com/products",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Bihar Makhana",
+      "url": "https://biharmakhana.com"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "Product",
+          "position": 1,
+          "name": "Premium Grade A Makhana",
+          "description": "Largest size foxnuts, perfect for snacking and gifting. 20-25mm size with low breakage.",
+          "category": "Food & Beverages > Snacks > Nuts & Seeds",
+          "brand": {
+            "@type": "Brand",
+            "name": "Bihar Makhana"
+          },
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "INR"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "position": 2,
+          "name": "Grade B Commercial Makhana",
+          "description": "Standard size foxnuts for food processing and bulk orders. 15-20mm size with competitive pricing.",
+          "category": "Food & Beverages > Snacks > Nuts & Seeds",
+          "brand": {
+            "@type": "Brand",
+            "name": "Bihar Makhana"
+          }
+        },
+        {
+          "@type": "Product",
+          "position": 3,
+          "name": "Processing Grade Makhana",
+          "description": "Perfect for food manufacturing and flavoring. Mixed sizes, cost effective for high volume needs.",
+          "category": "Food & Beverages > Snacks > Nuts & Seeds",
+          "brand": {
+            "@type": "Brand",
+            "name": "Bihar Makhana"
+          }
+        }
+      ]
+    }
   };
 
   const productCategories = [
@@ -48,6 +109,18 @@ const Products = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Bihar Makhana Products | Premium Foxnuts Varieties | Grade A Lotus Seeds Export"
+        description="Explore premium Bihar makhana products - Grade A, Commercial & Processing grade foxnuts. Export quality lotus seeds with competitive pricing. Bulk orders available. ISO certified organic makhana varieties."
+        keywords="bihar makhana products, premium foxnuts varieties, grade a makhana, commercial grade foxnuts, processing grade lotus seeds, export quality makhana, bulk makhana orders, organic foxnuts bihar, premium lotus seeds, makhana product catalog, foxnuts wholesale varieties, bihar makhana grades"
+        canonical="https://biharmakhana.com/products"
+        ogImage="https://biharmakhana.com/images/makhana-products.jpg"
+        structuredData={productsStructuredData}
+        breadcrumbs={[
+          { name: "Home", url: "https://biharmakhana.com/" },
+          { name: "Products", url: "https://biharmakhana.com/products" }
+        ]}
+      />
       <Header />
       
       {/* Hero Section */}

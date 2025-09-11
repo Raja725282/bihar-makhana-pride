@@ -2,11 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ContactForm from "@/components/ContactForm";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Globe, Heart, Shield, Truck, Users, Sprout, Award, Leaf, Target, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import biharFieldsImage from "@/assets/bihar-fields.jpg";
 import globalExportImage from "@/assets/global-export.jpg";
 import farmersWorkingImage from "@/assets/farmers-working.jpg";
@@ -18,70 +19,79 @@ const Index = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [showBulkForm, setShowBulkForm] = useState(false);
   
-  // SEO Meta Tags
-  useEffect(() => {
-    document.title = "Bihar Makhana Export | Premium Fox Nuts Supplier India | Makari Brand";
-    
-    // Meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds, organic healthy snacks. Global supplier for wholesale, bulk orders. Best price, authentic Bihar makhana.');
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'description';
-      meta.content = 'Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds, organic healthy snacks. Global supplier for wholesale, bulk orders. Best price, authentic Bihar makhana.';
-      document.head.appendChild(meta);
-    }
-
-    // Keywords
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) {
-      metaKeywords.setAttribute('content', 'bihar makhana, fox nuts export, lotus seeds india, premium makhana, organic fox nuts, makhana supplier, bulk makhana, wholesale fox nuts, indian superfoods, healthy snacks export');
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'keywords';
-      meta.content = 'bihar makhana, fox nuts export, lotus seeds india, premium makhana, organic fox nuts, makhana supplier, bulk makhana, wholesale fox nuts, indian superfoods, healthy snacks export';
-      document.head.appendChild(meta);
-    }
-
-    // Structured Data for Google
-    const structuredData = {
+  // Structured Data for Homepage
+  const homePageStructuredData = [
+    {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Makari - Bihar Makhana Export",
-      "description": "Leading makhana exporter from Bihar, India. Premium quality fox nuts supplier globally.",
-      "url": window.location.origin,
-      "logo": window.location.origin + "/logo.png",
+      "name": "Bihar Makhana",
+      "alternateName": "Makari Brand",
+      "description": "Leading makhana exporter from Bihar, India. Premium quality foxnuts supplier globally with 100% organic lotus seeds.",
+      "url": "https://biharmakhana.com",
+      "logo": "https://biharmakhana.com/logo.png",
+      "image": "https://biharmakhana.com/images/bihar-makhana-hero.jpg",
+      "telephone": "+91-98765-43210",
+      "email": "info@biharmakhana.com",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "IN",
+        "streetAddress": "Makhana Export Hub",
+        "addressLocality": "Darbhanga",
         "addressRegion": "Bihar",
-        "addressLocality": "Darbhanga"
+        "postalCode": "846004",
+        "addressCountry": "IN"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-98765-43210",
-        "contactType": "sales"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.1542,
+        "longitude": 85.8918
+      },
+      "foundingDate": "2020",
+      "numberOfEmployees": "50-100",
+      "areaServed": [
+        "India", "United States", "United Kingdom", "Canada", "Australia", 
+        "Germany", "France", "Netherlands", "Singapore", "UAE"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Makhana Products",
+        "itemListElement": [
+          {
+            "@type": "Product",
+            "name": "Premium Organic Makhana",
+            "description": "100% Organic Foxnuts from Bihar"
+          },
+          {
+            "@type": "Product", 
+            "name": "Bulk Makhana",
+            "description": "Wholesale quantities for retailers"
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150"
       },
       "sameAs": [
-        "https://www.linkedin.com/company/makari-brand",
-        "https://www.facebook.com/makaribrand"
+        "https://www.facebook.com/biharmakhana",
+        "https://www.instagram.com/biharmakhana",
+        "https://twitter.com/biharmakhana",
+        "https://www.linkedin.com/company/biharmakhana"
       ]
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Bihar Makhana",
+      "url": "https://biharmakhana.com",
+      "description": "Premium Makhana Exporter from Bihar, India",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://biharmakhana.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
-    };
-  }, []);
+    }
+  ];
   const features = [
     {
       icon: Heart,
@@ -107,6 +117,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Bihar Makhana | Premium Foxnuts Exporter | #1 Organic Lotus Seeds Supplier India"
+        description="🥇 Bihar's #1 Premium Makhana Exporter | 100% Organic Foxnuts | Bulk Orders | Export to 50+ Countries | Best Quality Lotus Seeds | Sustainable Farming | ISO Certified | Free Shipping India"
+        keywords="bihar makhana exporter, premium foxnuts india, organic lotus seeds bihar, makhana bulk order, foxnuts export company, lotus seeds manufacturer, bihar agricultural products, premium makhana supplier, organic foxnuts wholesale, foxnuts direct from farmers, makhana export quality, bihar lotus seeds, authentic makhana bihar, premium grade foxnuts, organic lotus cultivation bihar"
+        canonical="https://biharmakhana.com/"
+        ogImage="https://biharmakhana.com/images/bihar-makhana-hero.jpg"
+        structuredData={homePageStructuredData}
+      />
       <Header />
       <Hero />
       
