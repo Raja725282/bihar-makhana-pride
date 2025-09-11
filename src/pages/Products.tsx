@@ -1,11 +1,27 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Package, Award, Truck, Globe, Shield } from "lucide-react";
+import globalExportImage from "@/assets/global-export.jpg";
+import { useState } from "react";
 
 const Products = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [formType, setFormType] = useState<"quote" | "contact" | "bulk">("quote");
+
+  const handleQuoteRequest = () => {
+    setFormType("quote");
+    setShowContactForm(true);
+  };
+
+  const handleCatalogRequest = () => {
+    setFormType("quote");
+    setShowContactForm(true);
+  };
+
   const productCategories = [
     {
       title: "Premium Grade A",
@@ -35,13 +51,19 @@ const Products = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-card py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6 text-heritage">Our Premium Products</h1>
-          <p className="text-muted-foreground text-xl mb-8 max-w-3xl mx-auto">
-            Discover our range of premium makhana products, each grade carefully selected 
-            and processed to meet specific market requirements worldwide.
-          </p>
+      <section className="relative py-20 bg-gradient-hero text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl font-bold mb-6 text-white">Our Premium Products</h1>
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              Discover our range of premium makhana products, each grade carefully selected 
+              and processed to meet specific market requirements worldwide.
+            </p>
+            <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage" onClick={handleCatalogRequest}>
+              View Catalog
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -132,23 +154,42 @@ const Products = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-earth text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Place Your Order?</h2>
-          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+      <section 
+        className="relative py-16 text-heritage"
+        style={{
+          backgroundImage: `url(${globalExportImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-white/85"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl font-bold mb-6 text-heritage">Ready to Place Your Order?</h2>
+          <p className="text-heritage/80 text-lg mb-8 max-w-2xl mx-auto">
             Get in touch with our sales team to discuss your requirements and 
             receive a customized quote for your bulk order.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage">
+            <Button variant="outline" size="lg" className="border-heritage text-heritage hover:bg-heritage hover:text-white" onClick={handleCatalogRequest}>
               Download Catalog
             </Button>
-            <Button variant="hero" size="lg">
+            <Button variant="hero" size="lg" onClick={handleQuoteRequest}>
               Request Quote
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Contact Form Popup */}
+      {showContactForm && (
+        <ContactForm 
+          title={formType === "quote" ? "Request Quote" : "Download Catalog"} 
+          formType={formType}
+          isPopup={true}
+          onClose={() => setShowContactForm(false)}
+        />
+      )}
 
       <Footer />
     </div>

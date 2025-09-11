@@ -1,10 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Globe, Heart, Shield, Truck, Users, Sprout, Award, Leaf, Target, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import biharFieldsImage from "@/assets/bihar-fields.jpg";
 import globalExportImage from "@/assets/global-export.jpg";
 import farmersWorkingImage from "@/assets/farmers-working.jpg";
@@ -13,6 +15,73 @@ import biharAgricultureImage from "@/assets/bihar-agriculture.jpg";
 import brandStoryImage from "@/assets/brand-story.jpg";
 
 const Index = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [showBulkForm, setShowBulkForm] = useState(false);
+  
+  // SEO Meta Tags
+  useEffect(() => {
+    document.title = "Bihar Makhana Export | Premium Fox Nuts Supplier India | Makari Brand";
+    
+    // Meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds, organic healthy snacks. Global supplier for wholesale, bulk orders. Best price, authentic Bihar makhana.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds, organic healthy snacks. Global supplier for wholesale, bulk orders. Best price, authentic Bihar makhana.';
+      document.head.appendChild(meta);
+    }
+
+    // Keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', 'bihar makhana, fox nuts export, lotus seeds india, premium makhana, organic fox nuts, makhana supplier, bulk makhana, wholesale fox nuts, indian superfoods, healthy snacks export');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'keywords';
+      meta.content = 'bihar makhana, fox nuts export, lotus seeds india, premium makhana, organic fox nuts, makhana supplier, bulk makhana, wholesale fox nuts, indian superfoods, healthy snacks export';
+      document.head.appendChild(meta);
+    }
+
+    // Structured Data for Google
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Makari - Bihar Makhana Export",
+      "description": "Leading makhana exporter from Bihar, India. Premium quality fox nuts supplier globally.",
+      "url": window.location.origin,
+      "logo": window.location.origin + "/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN",
+        "addressRegion": "Bihar",
+        "addressLocality": "Darbhanga"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-98765-43210",
+        "contactType": "sales"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/makari-brand",
+        "https://www.facebook.com/makaribrand"
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup
+      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
   const features = [
     {
       icon: Heart,
@@ -53,9 +122,9 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow border-l-4 border-l-nature/60">
                 <CardContent className="pt-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-card mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-golden-light to-nature/30 mx-auto mb-4 flex items-center justify-center">
                     <feature.icon className="w-6 h-6 text-heritage" />
                   </div>
                   <h3 className="font-semibold mb-2 text-heritage">{feature.title}</h3>
@@ -92,9 +161,9 @@ const Index = () => {
                 alt="Bihar Makhana Fields"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-golden-light p-6 rounded-lg shadow-lg">
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-golden-light to-nature/20 p-6 rounded-lg shadow-lg border border-nature/30">
                 <div className="text-2xl font-bold text-heritage">85%</div>
-                <div className="text-sm text-muted-foreground">Global Production</div>
+                <div className="text-sm text-nature font-medium">Global Production</div>
               </div>
             </div>
           </div>
@@ -102,8 +171,17 @@ const Index = () => {
       </section>
 
       {/* Global Reach Section */}
-      <section className="py-16 bg-gradient-earth text-white">
-        <div className="container mx-auto px-4">
+      <section 
+        className="relative py-16 text-white"
+        style={{
+          backgroundImage: `url(${globalExportImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
@@ -113,7 +191,7 @@ const Index = () => {
               />
             </div>
             <div>
-              <h2 className="text-4xl font-bold mb-6">From Bihar to the World</h2>
+              <h2 className="text-4xl font-bold mb-6 text-white">From Bihar to the World</h2>
               <p className="text-white/90 text-lg mb-6 leading-relaxed">
                 Our premium makhana reaches tables across North America, Europe, Australia, 
                 and Asia. We've built a global supply chain that maintains freshness and 
@@ -121,16 +199,16 @@ const Index = () => {
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">50+</div>
+                  <div className="text-3xl font-bold text-white mb-1">50+</div>
                   <div className="text-sm text-white/80">Countries</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">1000+</div>
+                  <div className="text-3xl font-bold text-white mb-1">1000+</div>
                   <div className="text-sm text-white/80">Tons Annually</div>
                 </div>
               </div>
-              <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage" asChild>
-                <Link to="/global">View Global Presence</Link>
+              <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage" onClick={() => setShowContactForm(true)}>
+                Contact for Export
               </Button>
             </div>
           </div>
@@ -147,7 +225,7 @@ const Index = () => {
                 alt="Makhana Farmers Working in Bihar Fields"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -top-6 -right-6 bg-golden p-4 rounded-full shadow-lg">
+              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-golden to-nature p-4 rounded-full shadow-lg border border-nature/40">
                 <Users className="w-8 h-8 text-white" />
               </div>
             </div>
@@ -160,15 +238,15 @@ const Index = () => {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-golden flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">5000+ Family Farmers Connected</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-golden flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">Traditional Handpicked Methods</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-golden flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">Fair Trade & Direct Support</span>
                 </div>
               </div>
@@ -194,28 +272,28 @@ const Index = () => {
             <div>
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center text-white font-bold">1</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-golden to-golden-dark flex items-center justify-center text-white font-bold shadow-md">1</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-heritage">Pond Preparation</h3>
                     <p className="text-muted-foreground">Sacred ponds are prepared with organic fertilizers and traditional methods</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center text-white font-bold">2</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-nature to-nature/80 flex items-center justify-center text-white font-bold shadow-md">2</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-heritage">Seed Planting</h3>
                     <p className="text-muted-foreground">Lotus seeds are carefully planted in the muddy pond beds during monsoon</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center text-white font-bold">3</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-golden to-golden-dark flex items-center justify-center text-white font-bold shadow-md">3</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-heritage">Natural Growth</h3>
                     <p className="text-muted-foreground">Plants grow naturally for 4-5 months with minimal intervention</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-full bg-golden flex items-center justify-center text-white font-bold">4</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-nature to-nature/80 flex items-center justify-center text-white font-bold shadow-md">4</div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-heritage">Handpicked Harvest</h3>
                     <p className="text-muted-foreground">Farmers dive to collect seeds by hand, ensuring premium quality</p>
@@ -239,35 +317,44 @@ const Index = () => {
       </section>
 
       {/* Bihar Agriculture Section */}
-      <section className="py-16 bg-gradient-earth text-white">
-        <div className="container mx-auto px-4">
+      <section 
+        className="relative py-16 text-heritage"
+        style={{
+          backgroundImage: `url(${biharAgricultureImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-white/80"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Bihar: The Agricultural Powerhouse</h2>
-              <p className="text-white/90 text-lg mb-6 leading-relaxed">
+              <h2 className="text-4xl font-bold mb-6 text-heritage">Bihar: The Agricultural Powerhouse</h2>
+              <p className="text-heritage/80 text-lg mb-6 leading-relaxed">
                 Bihar's fertile Gangetic plains and abundant water resources create the perfect 
                 ecosystem for makhana cultivation. The state's agricultural heritage spans millennia, 
                 making it India's agricultural heartland.
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">60%</div>
-                  <div className="text-sm text-white/80">of India's Makhana</div>
+                  <div className="text-3xl font-bold text-heritage mb-1">60%</div>
+                  <div className="text-sm text-heritage/70">of India's Makhana</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">15,000</div>
-                  <div className="text-sm text-white/80">Hectares Under Cultivation</div>
+                  <div className="text-3xl font-bold text-heritage mb-1">15,000</div>
+                  <div className="text-sm text-heritage/70">Hectares Under Cultivation</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">80%</div>
-                  <div className="text-sm text-white/80">Rural Employment</div>
+                  <div className="text-3xl font-bold text-heritage mb-1">80%</div>
+                  <div className="text-sm text-heritage/70">Rural Employment</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-golden-light mb-1">₹500Cr</div>
-                  <div className="text-sm text-white/80">Annual Revenue</div>
+                  <div className="text-3xl font-bold text-heritage mb-1">₹500Cr</div>
+                  <div className="text-sm text-heritage/70">Annual Revenue</div>
                 </div>
               </div>
-              <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage" asChild>
+              <Button variant="hero" size="lg" asChild>
                 <Link to="/agriculture">Explore Agriculture</Link>
               </Button>
             </div>
@@ -277,8 +364,8 @@ const Index = () => {
                 alt="Bihar Agriculture Landscape"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -top-6 -right-6 bg-golden-light p-4 rounded-full shadow-lg">
-                <Leaf className="w-8 h-8 text-heritage" />
+              <div className="absolute -top-6 -right-6 bg-white/10 backdrop-blur-sm p-4 rounded-full shadow-lg border border-white/20">
+                <Leaf className="w-8 h-8 text-white" />
               </div>
             </div>
           </div>
@@ -295,9 +382,9 @@ const Index = () => {
                 alt="Our Brand Story"
                 className="rounded-lg shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-gradient-card p-6 rounded-lg shadow-lg">
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-golden-light to-nature/20 p-6 rounded-lg shadow-lg border border-nature/30">
                 <div className="text-2xl font-bold text-heritage">25+</div>
-                <div className="text-sm text-muted-foreground">Years Legacy</div>
+                <div className="text-sm text-nature font-medium">Years Legacy</div>
               </div>
             </div>
             <div>
@@ -309,19 +396,19 @@ const Index = () => {
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-golden flex-shrink-0" />
+                  <Award className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">ISO 22000 Certified Quality</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Target className="w-5 h-5 text-golden flex-shrink-0" />
+                  <Target className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">Direct Farmer Partnership Model</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Globe className="w-5 h-5 text-golden flex-shrink-0" />
+                  <Globe className="w-5 h-5 text-nature flex-shrink-0" />
                   <span className="text-muted-foreground">Global Quality Standards</span>
                 </div>
               </div>
-              <Button variant="premium" size="lg" asChild>
+              <Button variant="hero" size="lg" asChild>
                 <Link to="/about">Discover Our Journey</Link>
               </Button>
             </div>
@@ -362,10 +449,10 @@ const Index = () => {
                 description: "Worldwide delivery maintaining freshness"
               }
             ].map((process, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow border-l-4 border-l-nature/60">
                 <CardContent className="pt-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-card mx-auto mb-4 flex items-center justify-center">
-                    <process.icon className="w-8 h-8 text-heritage" />
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${index % 2 === 0 ? 'from-golden-light to-nature/30' : 'from-nature to-nature/80'} mx-auto mb-4 flex items-center justify-center`}>
+                    <process.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="font-semibold mb-3 text-heritage text-lg">{process.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{process.description}</p>
@@ -376,8 +463,181 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Bulk Products Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-heritage">Bulk Products & Wholesale</h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              Supply premium quality makhana in bulk quantities for retailers, distributors, 
+              and businesses worldwide with competitive pricing and reliable delivery.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-l-4 border-l-golden/60">
+              <CardContent className="pt-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-golden to-golden-dark mx-auto mb-4 flex items-center justify-center">
+                  <Target className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold mb-2 text-heritage text-xl">Premium Grade A+</h3>
+                <p className="text-muted-foreground mb-4">
+                  Largest size, premium quality for international markets
+                </p>
+                <div className="text-2xl font-bold text-golden mb-2">₹800-1200/kg</div>
+                <p className="text-sm text-muted-foreground">Minimum Order: 100kg</p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-l-4 border-l-nature/60">
+              <CardContent className="pt-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-nature to-nature/80 mx-auto mb-4 flex items-center justify-center">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold mb-2 text-heritage text-xl">Commercial Grade A</h3>
+                <p className="text-muted-foreground mb-4">
+                  Standard size, perfect for retail and food processing
+                </p>
+                <div className="text-2xl font-bold text-golden mb-2">₹600-900/kg</div>
+                <p className="text-sm text-muted-foreground">Minimum Order: 500kg</p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6 text-center hover:shadow-lg transition-shadow border-l-4 border-l-earth/60">
+              <CardContent className="pt-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-earth to-earth-light mx-auto mb-4 flex items-center justify-center">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold mb-2 text-heritage text-xl">Industrial Grade</h3>
+                <p className="text-muted-foreground mb-4">
+                  Bulk quantities for food manufacturing and processing
+                </p>
+                <div className="text-2xl font-bold text-golden mb-2">₹400-700/kg</div>
+                <p className="text-sm text-muted-foreground">Minimum Order: 1000kg</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button variant="hero" size="lg" onClick={() => setShowBulkForm(true)}>
+              Get Bulk Quote
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Presence & SEO Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-heritage">Bihar Makhana: India's Pride, World's Choice</h2>
+            <p className="text-muted-foreground text-lg max-w-4xl mx-auto">
+              Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds 
+              supplier for global markets. Organic, natural, healthy snacks from Bihar wetlands.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-golden mb-2">50+</div>
+              <div className="text-heritage font-semibold">Countries</div>
+              <div className="text-sm text-muted-foreground">Global Export</div>
+            </div>
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-golden mb-2">5000+</div>
+              <div className="text-heritage font-semibold">Farmers</div>
+              <div className="text-sm text-muted-foreground">Connected Network</div>
+            </div>
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-golden mb-2">100%</div>
+              <div className="text-heritage font-semibold">Organic</div>
+              <div className="text-sm text-muted-foreground">Natural Process</div>
+            </div>
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-golden mb-2">10+</div>
+              <div className="text-heritage font-semibold">Years</div>
+              <div className="text-sm text-muted-foreground">Export Experience</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-heritage">Why Bihar Makhana is Best in World</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Bihar's unique climate and soil conditions</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Traditional cultivation methods for 1000+ years</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Highest protein content and nutritional value</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">Premium size and superior taste quality</span>
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-heritage">Global Market Keywords</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Fox Nuts", "Lotus Seeds", "Makhana Export", "Bihar Makhana",
+                  "Premium Makhana", "Organic Fox Nuts", "Indian Superfoods",
+                  "Healthy Snacks", "Natural Makhana", "Wholesale Makhana"
+                ].map((keyword, index) => (
+                  <span key={index} className="px-3 py-1 bg-golden/10 text-heritage rounded-full text-sm">
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* International Markets Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-heritage">Serving Global Markets</h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              From Bihar to the world - we export premium makhana to major international markets 
+              including USA, Europe, Middle East, and Asia Pacific regions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-center">
+            {[
+              { country: "🇺🇸 USA", market: "Premium Health Food" },
+              { country: "🇬🇧 UK", market: "Organic Snacks" },
+              { country: "🇩🇪 Germany", market: "Natural Foods" },
+              { country: "🇦🇺 Australia", market: "Superfoods" },
+              { country: "🇨🇦 Canada", market: "Healthy Snacks" },
+              { country: "🇦🇪 UAE", market: "Premium Import" },
+              { country: "🇸🇬 Singapore", market: "Asian Delicacies" },
+              { country: "🇯🇵 Japan", market: "Health Foods" },
+              { country: "🇰🇷 South Korea", market: "Natural Snacks" },
+              { country: "🇳🇱 Netherlands", market: "Organic Products" },
+              { country: "🇫🇷 France", market: "Gourmet Foods" },
+              { country: "🇮🇹 Italy", market: "Premium Ingredients" }
+            ].map((item, index) => (
+              <div key={index} className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-2xl mb-2">{item.country.split(' ')[0]}</div>
+                <div className="font-semibold text-heritage text-sm">{item.country.split(' ')[1]}</div>
+                <div className="text-xs text-muted-foreground mt-1">{item.market}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-card">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6 text-heritage">Ready to Experience Bihar's Finest?</h2>
           <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
@@ -388,12 +648,31 @@ const Index = () => {
             <Button variant="hero" size="lg" asChild>
               <Link to="/products">View Products</Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/bulk-order">Place Bulk Order</Link>
+            <Button variant="outline" size="lg" onClick={() => setShowBulkForm(true)}>
+              Get Bulk Quote
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Contact Form Popups */}
+      {showContactForm && (
+        <ContactForm 
+          isOpen={showContactForm}
+          onClose={() => setShowContactForm(false)}
+          title="Export Inquiry"
+          formType="contact"
+        />
+      )}
+      
+      {showBulkForm && (
+        <ContactForm 
+          isOpen={showBulkForm}
+          onClose={() => setShowBulkForm(false)}
+          title="Bulk Order Quote"
+          formType="bulk"
+        />
+      )}
 
       <Footer />
     </div>

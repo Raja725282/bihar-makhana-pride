@@ -23,23 +23,57 @@ const BulkOrder = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Order Request Submitted!",
-      description: "We'll contact you within 24 hours with detailed pricing and shipping information.",
-    });
-    // Reset form
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      country: "",
-      productType: "",
-      quantity: "",
-      message: ""
-    });
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "ae7ee658-dfb2-4490-95ed-595ee9584dd2",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          country: formData.country,
+          product_type: formData.productType,
+          quantity: formData.quantity,
+          message: formData.message,
+          subject: `Bulk Order Request from ${formData.name}`,
+          from_name: "Makari Bulk Orders",
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Order Request Submitted!",
+          description: "We'll contact you within 24 hours with detailed pricing and shipping information.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          country: "",
+          productType: "",
+          quantity: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Failed to submit request");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit request. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   const bulkBenefits = [
@@ -107,15 +141,14 @@ const BulkOrder = () => {
       </section>
 
       {/* Order Form */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Form */}
+      <section className="py-16 bg-gradient-card">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl text-heritage">Request a Quote</CardTitle>
-                <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you with a customized quote within 24 hours.
+                <CardTitle className="text-3xl text-center text-heritage">Request Bulk Quote</CardTitle>
+                <p className="text-center text-muted-foreground">
+                  Fill out the form below and we'll get back to you within 24 hours with a detailed quote
                 </p>
               </CardHeader>
               <CardContent>
@@ -152,28 +185,27 @@ const BulkOrder = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Phone Number *</Label>
+                      <Label htmlFor="phone">Phone Number</Label>
                       <Input
                         id="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        required
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="country">Country/Region *</Label>
-                    <Input
-                      id="country"
-                      value={formData.country}
-                      onChange={(e) => setFormData({...formData, country: e.target.value})}
-                      required
-                    />
-                  </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="country">Country *</Label>
+                      <Input
+                        id="country"
+                        value={formData.country}
+                        onChange={(e) => setFormData({...formData, country: e.target.value})}
+                        placeholder="Delivery destination"
+                        required
+                      />
+                    </div>
                     <div>
                       <Label htmlFor="productType">Product Type *</Label>
                       <Select value={formData.productType} onValueChange={(value) => setFormData({...formData, productType: value})}>
@@ -181,27 +213,26 @@ const BulkOrder = () => {
                           <SelectValue placeholder="Select product type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="plain">Plain Makhana</SelectItem>
-                          <SelectItem value="salted">Salted Makhana</SelectItem>
-                          <SelectItem value="flavored">Flavored Varieties</SelectItem>
-                          <SelectItem value="organic">Organic Makhana</SelectItem>
-                          <SelectItem value="mixed">Mixed Products</SelectItem>
+                          <SelectItem value="premium-roasted">Premium Roasted Makhana</SelectItem>
+                          <SelectItem value="natural-raw">Natural Raw Makhana</SelectItem>
+                          <SelectItem value="flavored">Flavored Makhana</SelectItem>
+                          <SelectItem value="organic">Organic Certified</SelectItem>
+                          <SelectItem value="mixed">Mixed Varieties</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
-                    <div>
-                      <Label htmlFor="quantity">Required Quantity *</Label>
-                      <Input
-                        id="quantity"
-                        placeholder="e.g., 1000 kg"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({...formData, quantity: e.target.value})}
-                        required
-                      />
-      </div>
+                  </div>
 
-      <Footer />
-    </div>
+                  <div>
+                    <Label htmlFor="quantity">Required Quantity *</Label>
+                    <Input
+                      id="quantity"
+                      placeholder="e.g., 1000 kg"
+                      value={formData.quantity}
+                      onChange={(e) => setFormData({...formData, quantity: e.target.value})}
+                      required
+                    />
+                  </div>
 
                   <div>
                     <Label htmlFor="message">Additional Requirements</Label>
@@ -219,67 +250,81 @@ const BulkOrder = () => {
                 </form>
               </CardContent>
             </Card>
-
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-heritage">Direct Contact</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-1">Sales Manager</h4>
-                    <p className="text-sm text-muted-foreground">bulk@biharmakhana.com</p>
-                    <p className="text-sm text-muted-foreground">+91 98765 43210</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Export Department</h4>
-                    <p className="text-sm text-muted-foreground">export@biharmakhana.com</p>
-                    <p className="text-sm text-muted-foreground">+91 98765 43211</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Business Hours</h4>
-                    <p className="text-sm text-muted-foreground">Mon-Fri: 9:00 AM - 6:00 PM IST</p>
-                    <p className="text-sm text-muted-foreground">Sat: 9:00 AM - 2:00 PM IST</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-heritage">Minimum Order Quantities</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-sm">Domestic Orders</span>
-                    <span className="text-sm font-semibold">500 kg</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">International Orders</span>
-                    <span className="text-sm font-semibold">1000 kg</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">Container Load</span>
-                    <span className="text-sm font-semibold">20+ tons</span>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-xl text-heritage">Payment Terms</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground">• Letter of Credit (LC)</p>
-                  <p className="text-sm text-muted-foreground">• Telegraphic Transfer (TT)</p>
-                  <p className="text-sm text-muted-foreground">• Advance Payment (for smaller orders)</p>
-                  <p className="text-sm text-muted-foreground">• 30-day credit terms (for established clients)</p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Pricing Information */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-heritage">Bulk Pricing & Terms</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Transparent pricing and flexible terms for all business sizes
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl text-heritage">Volume Discounts</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-sm">500-1000 kg</span>
+                  <span className="text-sm font-semibold text-green-600">5% off</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">1000-5000 kg</span>
+                  <span className="text-sm font-semibold text-green-600">10% off</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">5000+ kg</span>
+                  <span className="text-sm font-semibold text-green-600">15% off</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Container Load (20+ tons)</span>
+                  <span className="text-sm font-semibold text-green-600">20% off</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl text-heritage">Minimum Order Quantities</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-sm">Domestic Orders</span>
+                  <span className="text-sm font-semibold">500 kg</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">International Orders</span>
+                  <span className="text-sm font-semibold">1000 kg</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Container Load</span>
+                  <span className="text-sm font-semibold">20+ tons</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl text-heritage">Payment Terms</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <p className="text-sm text-muted-foreground">• Letter of Credit (LC)</p>
+                <p className="text-sm text-muted-foreground">• Telegraphic Transfer (TT)</p>
+                <p className="text-sm text-muted-foreground">• Advance Payment (for smaller orders)</p>
+                <p className="text-sm text-muted-foreground">• 30-day credit terms (for established clients)</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };

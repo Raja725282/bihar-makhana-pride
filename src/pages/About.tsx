@@ -1,10 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Trophy } from "lucide-react";
+import { useState } from "react";
 import biharFieldsImage from "@/assets/bihar-fields.jpg";
 
 const About = () => {
+  const [showContactForm, setShowContactForm] = useState(false);
+  
   const milestones = [
     {
       year: "1990s",
@@ -56,13 +61,19 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-card">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6 text-heritage">The Pride of Bihar</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From the ancient wetlands of Bihar comes a story of tradition, quality, and global success. 
-            Discover how we've transformed local farming into a worldwide phenomenon.
-          </p>
+      <section className="relative py-20 bg-gradient-hero text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl font-bold mb-6 text-white">The Pride of Bihar</h1>
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              From the ancient wetlands of Bihar comes a story of tradition, quality, and global success. 
+              Discover how we've transformed local farming into a worldwide phenomenon.
+            </p>
+            <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-heritage" onClick={() => setShowContactForm(true)}>
+              Partner With Us
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -93,10 +104,8 @@ const About = () => {
                 alt="Bihar Makhana Fields"
                 className="rounded-lg shadow-xl"
               />
-      </div>
-
-      <Footer />
-    </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -151,20 +160,29 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-gradient-earth text-white">
-        <div className="container mx-auto px-4">
+      <section 
+        className="relative py-16 text-heritage"
+        style={{
+          backgroundImage: `url(${biharFieldsImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-white/85"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <p className="text-white/90 text-lg leading-relaxed">
+              <h2 className="text-3xl font-bold mb-6 text-heritage">Our Mission</h2>
+              <p className="text-heritage/80 text-lg leading-relaxed">
                 To be the global ambassador of Bihar's makhana, promoting sustainable agriculture, 
                 supporting farming communities, and delivering premium quality products that showcase 
                 the rich agricultural heritage of our state to the world.
               </p>
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Vision</h2>
-              <p className="text-white/90 text-lg leading-relaxed">
+              <h2 className="text-3xl font-bold mb-6 text-heritage">Our Vision</h2>
+              <p className="text-heritage/80 text-lg leading-relaxed">
                 To establish Bihar as the undisputed global hub for premium makhana production, 
                 while fostering innovation in traditional farming practices and creating sustainable 
                 livelihoods for thousands of farming families across the state.
@@ -173,6 +191,18 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact Form Popup */}
+      {showContactForm && (
+        <ContactForm 
+          isOpen={showContactForm}
+          onClose={() => setShowContactForm(false)}
+          title="Partnership Inquiry"
+          formType="contact"
+        />
+      )}
+
+      <Footer />
     </div>
   );
 };

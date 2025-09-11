@@ -1,13 +1,49 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import ContactForm from "@/components/ContactForm";
+import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, Globe, Users } from "lucide-react";
 
 const Contact = () => {
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: "Our Location",
+      details: ["Darbhanga, Bihar, India", "Pin Code: 846004"],
+      description: "Heart of makhana cultivation region"
+    },
+    {
+      icon: Phone,
+      title: "Phone Numbers",
+      details: ["+91 98765 43210", "+91 87654 32109"],
+      description: "Available 24/7 for urgent inquiries"
+    },
+    {
+      icon: Mail,
+      title: "Email Address",
+      details: ["info@makari.com", "export@makari.com"],
+      description: "We respond within 4 hours"
+    },
+    {
+      icon: Clock,
+      title: "Business Hours",
+      details: ["Mon-Fri: 9:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM"],
+      description: "Indian Standard Time (IST)"
+    },
+    {
+      icon: Globe,
+      title: "Export Desk",
+      details: ["Available worldwide", "Multi-language support"],
+      description: "Dedicated international team"
+    },
+    {
+      icon: Users,
+      title: "Bulk Orders",
+      details: ["Minimum 500kg", "Custom packaging available"],
+      description: "Special rates for large quantities"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -28,177 +64,56 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl text-heritage">Send Us a Message</CardTitle>
-                <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you within 24 hours
-                </p>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="Your first name" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Your last name" />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" placeholder="your@email.com" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" placeholder="+91 98765 43210" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company Name</Label>
-                    <Input id="company" placeholder="Your company name" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
-                    <Input id="country" placeholder="Your country" />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="inquiry">Inquiry Type</Label>
-                    <select className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring">
-                      <option>Bulk Order Inquiry</option>
-                      <option>Export Partnership</option>
-                      <option>Product Information</option>
-                      <option>Quality Certification</option>
-                      <option>General Inquiry</option>
-                    </select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us about your requirements, quantity needed, and any specific questions..."
-                      rows={5}
-                    />
-                  </div>
-                  
-                  <Button variant="hero" size="lg" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-card flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-heritage" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-heritage">Head Office</h3>
-                      <p className="text-muted-foreground">
-                        Mithila Agricultural Complex<br />
-                        Darbhanga, Bihar, India - 846004
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-card flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-heritage" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-heritage">Phone Numbers</h3>
-                      <p className="text-muted-foreground">
-                        Sales: +91 98765 43210<br />
-                        Export: +91 98765 43211<br />
-                        Support: +91 98765 43212
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-card flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-heritage" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-heritage">Email Addresses</h3>
-                      <p className="text-muted-foreground">
-                        General: info@makari.com<br />
-                        Sales: sales@makari.com<br />
-                        Export: export@makari.com
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-card flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-heritage" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-heritage">Business Hours</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Saturday: 9:00 AM - 6:00 PM<br />
-                        Sunday: 10:00 AM - 4:00 PM<br />
-                        (Indian Standard Time)
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <ContactForm title="Send Us a Message" formType="contact" />
+            
+            {/* Contact Information Cards */}
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-heritage mb-8">Contact Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {contactInfo.map((info, index) => (
+                  <Card key={index} className="p-4 hover:shadow-lg transition-shadow">
+                    <CardContent className="pt-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-card flex items-center justify-center flex-shrink-0">
+                          <info.icon className="w-5 h-5 text-heritage" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-heritage mb-1">{info.title}</h3>
+                          {info.details.map((detail, detailIndex) => (
+                            <p key={detailIndex} className="text-sm text-muted-foreground">{detail}</p>
+                          ))}
+                          <p className="text-xs text-nature mt-1">{info.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-16 bg-muted/30">
+      {/* Map Section */}
+      <section className="py-16 bg-gradient-card">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="w-16 h-16 rounded-full bg-gradient-card mx-auto mb-4 flex items-center justify-center">
-                <Globe className="w-8 h-8 text-heritage" />
-              </div>
-              <div className="text-3xl font-bold text-heritage mb-2">50+</div>
-              <div className="text-muted-foreground">Countries Served</div>
-            </div>
-            
-            <div>
-              <div className="w-16 h-16 rounded-full bg-gradient-card mx-auto mb-4 flex items-center justify-center">
-                <Users className="w-8 h-8 text-heritage" />
-              </div>
-              <div className="text-3xl font-bold text-heritage mb-2">5000+</div>
-              <div className="text-muted-foreground">Happy Customers</div>
-            </div>
-            
-            <div>
-              <div className="w-16 h-16 rounded-full bg-gradient-card mx-auto mb-4 flex items-center justify-center">
-                <Clock className="w-8 h-8 text-heritage" />
-              </div>
-              <div className="text-3xl font-bold text-heritage mb-2">24hrs</div>
-              <div className="text-muted-foreground">Response Time</div>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-heritage mb-4">Find Us on Map</h2>
+            <p className="text-muted-foreground">
+              Located in the heart of Bihar's makhana cultivation region
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14430.834312234836!2d85.8962!3d26.1542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce6732867%3A0x4059b3ca66c4ac62!2sDarbhanga%2C%20Bihar!5e0!3m2!1sen!2sin!4v1647875234567!5m2!1sen!2sin"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>

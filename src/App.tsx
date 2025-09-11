@@ -11,6 +11,13 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import Agriculture from "./pages/Agriculture";
+import Global from "./pages/Global";
+import Farmers from "./pages/Farmers";
+import ExportServices from "./pages/ExportServices";
+import QualityAssurance from "./pages/QualityAssurance";
+import CustomPackaging from "./pages/CustomPackaging";
+import Logistics from "./pages/Logistics";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +35,13 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/agriculture" element={<Agriculture />} />
+          <Route path="/global" element={<Global />} />
+          <Route path="/farmers" element={<Farmers />} />
+          <Route path="/export-services" element={<ExportServices />} />
+          <Route path="/quality-assurance" element={<QualityAssurance />} />
+          <Route path="/custom-packaging" element={<CustomPackaging />} />
+          <Route path="/logistics" element={<Logistics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
