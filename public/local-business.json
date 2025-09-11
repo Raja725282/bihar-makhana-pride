@@ -1,15 +1,16 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Bihar Makhana Export Company",
-  "alternateName": "Makari Brand",
-  "description": "Leading makhana exporter from Bihar, India. Premium quality foxnuts supplier with 100% organic lotus seeds. Bulk orders and international shipping available.",
-  "url": "https://biharmakhana.com",
-  "logo": "https://biharmakhana.com/logo.png",
+  "name": "Makario - Bihar Makhana Export Company",
+  "alternateName": "Makario Brand - The Pride of Bihar",
+  "description": "Leading makhana exporter from Bihar, India. Premium quality foxnuts supplier with 100% organic lotus seeds. Bulk orders and international shipping available. Makario brand represents the finest Bihar makhana globally.",
+  "url": "https://www.makario.in",
+  "logo": "https://www.makario.in/makario-favicon.svg",
   "image": [
-    "https://biharmakhana.com/images/bihar-makhana-hero.jpg",
-    "https://biharmakhana.com/images/makhana-products.jpg",
-    "https://biharmakhana.com/images/bihar-fields.jpg"
+    "https://www.makario.in/assets/bihar-makhana-hero.jpg",
+    "https://www.makario.in/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
+    "https://www.makario.in/assets/bihar-fields.jpg",
+    "https://www.makario.in/assets/farmers-working.jpg"
   ],
   "telephone": "+91-9953240031",
   "email": "info@makario.in",

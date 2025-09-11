@@ -5,130 +5,143 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    <!-- Homepage -->
+    <!-- Homepage - Bihar Makhana Makario Brand -->
     <url>
-        <loc>https://biharmakhana.com/</loc>
+        <loc>https://www.makario.in/</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://biharmakhana.com/images/bihar-makhana-hero.jpg</image:loc>
-            <image:title>Bihar Makhana Premium Foxnuts</image:title>
-            <image:caption>Premium quality makhana from Bihar, India</image:caption>
+            <image:loc>https://www.makario.in/assets/bihar-makhana-hero.jpg</image:loc>
+            <image:title>Makario - Bihar Makhana Premium Foxnuts</image:title>
+            <image:caption>Premium quality makhana (foxnuts) from Bihar, India - Makario Brand</image:caption>
         </image:image>
     </url>
 
-    <!-- About Page -->
+    <!-- About Us - Makario Brand Story -->
     <url>
-        <loc>https://biharmakhana.com/about</loc>
+        <loc>https://www.makario.in/about</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://www.makario.in/assets/brand-story.jpg</image:loc>
+            <image:title>Makario Brand Story - Bihar Makhana Heritage</image:title>
+            <image:caption>The pride of Bihar - Authentic makhana from traditional farmers</image:caption>
+        </image:image>
     </url>
 
-    <!-- Products Page -->
+    <!-- Products - Makhana Varieties -->
     <url>
-        <loc>https://biharmakhana.com/products</loc>
+        <loc>https://www.makario.in/products</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://biharmakhana.com/images/makhana-products.jpg</image:loc>
-            <image:title>Makhana Product Range</image:title>
+            <image:loc>https://www.makario.in/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png</image:loc>
+            <image:title>Makario Makhana Product Range - Premium Grade A</image:title>
+            <image:caption>Premium Grade A, Commercial Grade, Processing Grade makhana varieties</image:caption>
         </image:image>
     </url>
 
-    <!-- Bulk Order Page -->
+    <!-- Bulk Orders - Wholesale Makhana -->
     <url>
-        <loc>https://biharmakhana.com/bulk-order</loc>
+        <loc>https://www.makario.in/bulk-order</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Contact Page -->
+    <!-- Contact - Makario Customer Service -->
     <url>
-        <loc>https://biharmakhana.com/contact</loc>
+        <loc>https://www.makario.in/contact</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- Blog Page -->
+    <!-- Blog - Makhana Knowledge Hub -->
     <url>
-        <loc>https://biharmakhana.com/blog</loc>
+        <loc>https://www.makario.in/blog</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- FAQ Page -->
+    <!-- FAQ - Makhana Questions -->
     <url>
-        <loc>https://biharmakhana.com/faq</loc>
+        <loc>https://www.makario.in/faq</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- Agriculture Page -->
+    <!-- Agriculture - Bihar Makhana Farming -->
     <url>
-        <loc>https://biharmakhana.com/agriculture</loc>
+        <loc>https://www.makario.in/agriculture</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://biharmakhana.com/images/bihar-agriculture.jpg</image:loc>
-            <image:title>Bihar Makhana Agriculture</image:title>
+            <image:loc>https://www.makario.in/assets/bihar-agriculture.jpg</image:loc>
+            <image:title>Bihar Makhana Agriculture - Traditional Farming</image:title>
+            <image:caption>Sustainable makhana cultivation in Bihar's wetlands</image:caption>
         </image:image>
     </url>
 
-    <!-- Global Export Page -->
+    <!-- Global Export - International Makhana Supply -->
     <url>
-        <loc>https://biharmakhana.com/global</loc>
-        <lastmod>2025-09-11</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Farmers Page -->
-    <url>
-        <loc>https://biharmakhana.com/farmers</loc>
+        <loc>https://www.makario.in/global</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://biharmakhana.com/images/farmers-working.jpg</image:loc>
-            <image:title>Bihar Makhana Farmers</image:title>
+            <image:loc>https://www.makario.in/assets/global-export.jpg</image:loc>
+            <image:title>Makario Global Export - Worldwide Makhana Delivery</image:title>
+            <image:caption>Exporting premium Bihar makhana to 50+ countries worldwide</image:caption>
         </image:image>
     </url>
 
-    <!-- Export Services Page -->
+    <!-- Farmers - Bihar Makhana Growers -->
     <url>
-        <loc>https://biharmakhana.com/export-services</loc>
+        <loc>https://www.makario.in/farmers</loc>
+        <lastmod>2025-09-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://www.makario.in/assets/farmers-working.jpg</image:loc>
+            <image:title>Bihar Makhana Farmers - Local Growers</image:title>
+            <image:caption>Supporting local farmers with fair trade practices</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Export Services - International Trade -->
+    <url>
+        <loc>https://www.makario.in/export-services</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Quality Assurance Page -->
+    <!-- Quality Assurance - Food Safety Standards -->
     <url>
-        <loc>https://biharmakhana.com/quality-assurance</loc>
+        <loc>https://www.makario.in/quality-assurance</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Custom Packaging Page -->
+    <!-- Custom Packaging - Private Label Makhana -->
     <url>
-        <loc>https://biharmakhana.com/custom-packaging</loc>
+        <loc>https://www.makario.in/custom-packaging</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- Logistics Page -->
+    <!-- Logistics - Makhana Delivery Services -->
     <url>
-        <loc>https://biharmakhana.com/logistics</loc>
+        <loc>https://www.makario.in/logistics</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -136,7 +149,7 @@
 
     <!-- Privacy Policy -->
     <url>
-        <loc>https://biharmakhana.com/privacy</loc>
+        <loc>https://www.makario.in/privacy</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -144,7 +157,7 @@
 
     <!-- Terms of Service -->
     <url>
-        <loc>https://biharmakhana.com/terms</loc>
+        <loc>https://www.makario.in/terms</loc>
         <lastmod>2025-09-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
