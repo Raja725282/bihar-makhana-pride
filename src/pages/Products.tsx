@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import QuoteForm from "@/components/QuoteForm";
 import SEO from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,11 +12,18 @@ import { useState } from "react";
 
 const Products = () => {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<string>("");
   const [formType, setFormType] = useState<"quote" | "contact" | "bulk">("quote");
 
   const handleQuoteRequest = () => {
-    setFormType("quote");
-    setShowContactForm(true);
+    setSelectedProduct("");
+    setShowQuoteForm(true);
+  };
+
+  const handleProductQuoteRequest = (productName: string) => {
+    setSelectedProduct(productName);
+    setShowQuoteForm(true);
   };
 
   const handleCatalogRequest = () => {
@@ -166,7 +174,7 @@ const Products = () => {
                       <div className="text-lg font-semibold text-heritage mb-4">
                         {product.price}
                       </div>
-                      <Button variant="hero" className="w-full">
+                      <Button variant="hero" className="w-full" onClick={() => handleProductQuoteRequest(product.title)}>
                         Request Quote
                       </Button>
                     </div>
@@ -261,6 +269,15 @@ const Products = () => {
           formType={formType}
           isPopup={true}
           onClose={() => setShowContactForm(false)}
+        />
+      )}
+
+      {/* Quote Form Popup */}
+      {showQuoteForm && (
+        <QuoteForm
+          isOpen={showQuoteForm}
+          onClose={() => setShowQuoteForm(false)}
+          productName={selectedProduct}
         />
       )}
 

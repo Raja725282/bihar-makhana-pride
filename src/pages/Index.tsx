@@ -2,7 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ContactForm from "@/components/ContactForm";
+import QuoteForm from "@/components/QuoteForm";
 import SEO from "@/components/SEO";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Globe, Heart, Shield, Truck, Users, Sprout, Award, Leaf, Target, CheckCircle } from "lucide-react";
@@ -18,6 +20,7 @@ import brandStoryImage from "@/assets/brand-story.jpg";
 const Index = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [showBulkForm, setShowBulkForm] = useState(false);
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
   
   // Structured Data for Homepage
   const homePageStructuredData = [
@@ -663,7 +666,10 @@ const Index = () => {
             we're here to serve you with the finest quality makhana from Bihar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" asChild>
+            <Button variant="hero" size="lg" onClick={() => setShowQuoteForm(true)}>
+              Request Quote
+            </Button>
+            <Button variant="outline" size="lg" asChild>
               <Link to="/products">View Products</Link>
             </Button>
             <Button variant="outline" size="lg" onClick={() => setShowBulkForm(true)}>
@@ -692,6 +698,15 @@ const Index = () => {
         />
       )}
 
+      {/* Quote Form Popup */}
+      {showQuoteForm && (
+        <QuoteForm
+          isOpen={showQuoteForm}
+          onClose={() => setShowQuoteForm(false)}
+        />
+      )}
+
+      <WhatsAppButton />
       <Footer />
     </div>
   );

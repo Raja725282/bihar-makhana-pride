@@ -329,6 +329,135 @@
 
   <body>
     <div id="root"></div>
+    
+    <!-- WhatsApp Popup Widget -->
+    <div id="whatsapp-widget" class="whatsapp-widget">
+      <a href="https://wa.me/917250320333?text=Hi%20Makario%20Team!%20I%20am%20interested%20in%20your%20premium%20makhana%20products.%20Please%20share%20more%20details%20about%20pricing%20and%20availability." 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="whatsapp-btn"
+         aria-label="Contact us on WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382C17.367 14.382 15.498 15.21 15.228 15.318C14.958 15.43 14.786 15.484 14.615 15.179C14.445 14.873 13.797 14.382 13.797 14.382C13.625 14.382 13.454 14.328 13.359 14.382C12.671 14.382 11.984 15.21 11.984 15.21C11.984 15.21 10.305 16.035 8.15 13.88C6.648 12.378 6.648 12.378 6.648 12.378C6.648 12.378 5.823 10.595 7.325 9.093C8.827 7.591 10.61 8.416 10.61 8.416C10.61 8.416 11.436 8.416 12.26 9.24C13.085 10.065 13.085 10.889 13.085 10.889C13.085 10.889 13.797 11.601 14.109 11.601C14.422 11.601 14.615 11.408 14.615 11.408C14.615 11.408 15.44 10.583 16.264 11.408C17.089 12.232 16.264 13.057 16.264 13.057C16.264 13.057 17.472 14.382 17.472 14.382Z" fill="white"/>
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.56 20.15 9.11 19.76 7.85 19.02L7.55 18.85L4.51 19.64L5.31 16.69L5.13 16.36C4.34 15.05 3.91 13.53 3.91 11.91C3.91 7.37 7.49 3.78 12.04 3.78C14.23 3.78 16.3 4.63 17.85 6.17C19.39 7.72 20.24 9.79 20.24 11.91C20.24 16.46 16.66 20.15 12.05 20.15Z" fill="white"/>
+        </svg>
+        <span class="whatsapp-text">WhatsApp</span>
+      </a>
+      
+      <!-- Pulse animation -->
+      <div class="whatsapp-pulse"></div>
+    </div>
+
+    <style>
+      .whatsapp-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+      }
+
+      .whatsapp-btn {
+        display: flex;
+        align-items: center;
+        background: #25D366;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .whatsapp-btn:hover {
+        background: #128C7E;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        text-decoration: none;
+        color: white;
+      }
+
+      .whatsapp-btn svg {
+        margin-right: 8px;
+        flex-shrink: 0;
+      }
+
+      .whatsapp-text {
+        white-space: nowrap;
+      }
+
+      .whatsapp-pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background: rgba(37, 211, 102, 0.3);
+        border-radius: 50px;
+        animation: whatsapp-pulse 2s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes whatsapp-pulse {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        70% {
+          transform: translate(-50%, -50%) scale(1.4);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.4);
+          opacity: 0;
+        }
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .whatsapp-widget {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .whatsapp-btn {
+          padding: 10px 14px;
+          font-size: 13px;
+        }
+        
+        .whatsapp-btn svg {
+          width: 28px;
+          height: 28px;
+          margin-right: 6px;
+        }
+      }
+
+      /* Hide text on very small screens */
+      @media (max-width: 480px) {
+        .whatsapp-text {
+          display: none;
+        }
+        
+        .whatsapp-btn {
+          padding: 12px;
+          border-radius: 50%;
+        }
+        
+        .whatsapp-btn svg {
+          margin-right: 0;
+        }
+        
+        .whatsapp-pulse {
+          border-radius: 50%;
+        }
+      }
+    </style>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
