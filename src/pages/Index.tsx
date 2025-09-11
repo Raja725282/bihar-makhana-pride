@@ -27,11 +27,11 @@ const Index = () => {
       "name": "Bihar Makhana",
       "alternateName": "Makari Brand",
       "description": "Leading makhana exporter from Bihar, India. Premium quality foxnuts supplier globally with 100% organic lotus seeds.",
-      "url": "https://biharmakhana.com",
-      "logo": "https://biharmakhana.com/logo.png",
-      "image": "https://biharmakhana.com/images/bihar-makhana-hero.jpg",
-      "telephone": "+91-98765-43210",
-      "email": "info@biharmakhana.com",
+      "url": "https://makario.in",
+      "logo": "https://makario.in/logo.png",
+      "image": "https://makario.in/images/bihar-makhana-hero.jpg",
+      "telephone": "+91-9953240031",
+      "email": "info@makario.in",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Makhana Export Hub",
@@ -83,11 +83,11 @@ const Index = () => {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Bihar Makhana",
-      "url": "https://biharmakhana.com",
+      "url": "https://makario.in",
       "description": "Premium Makhana Exporter from Bihar, India",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://biharmakhana.com/search?q={search_term_string}",
+        "target": "https://makario.in/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -121,8 +121,8 @@ const Index = () => {
         title="Bihar Makhana | Premium Foxnuts Exporter | #1 Organic Lotus Seeds Supplier India"
         description="🥇 Bihar's #1 Premium Makhana Exporter | 100% Organic Foxnuts | Bulk Orders | Export to 50+ Countries | Best Quality Lotus Seeds | Sustainable Farming | ISO Certified | Free Shipping India"
         keywords="bihar makhana exporter, premium foxnuts india, organic lotus seeds bihar, makhana bulk order, foxnuts export company, lotus seeds manufacturer, bihar agricultural products, premium makhana supplier, organic foxnuts wholesale, foxnuts direct from farmers, makhana export quality, bihar lotus seeds, authentic makhana bihar, premium grade foxnuts, organic lotus cultivation bihar"
-        canonical="https://biharmakhana.com/"
-        ogImage="https://biharmakhana.com/images/bihar-makhana-hero.jpg"
+        canonical="https://makario.in/"
+        ogImage="https://makario.in/images/bihar-makhana-hero.jpg"
         structuredData={homePageStructuredData}
       />
       <Header />

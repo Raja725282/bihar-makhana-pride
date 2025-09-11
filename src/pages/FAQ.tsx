@@ -238,7 +238,7 @@ const FAQ = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   Speak directly with our team
                 </p>
-                <Button size="sm" variant="outline">+91-98765-43210</Button>
+                <Button size="sm" variant="outline">+91-9953240031</Button>
               </Card>
               
               <Card className="text-center p-6">

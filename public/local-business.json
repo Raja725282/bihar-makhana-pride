@@ -11,8 +11,8 @@
     "https://biharmakhana.com/images/makhana-products.jpg",
     "https://biharmakhana.com/images/bihar-fields.jpg"
   ],
-  "telephone": "+91-98765-43210",
-  "email": "info@biharmakhana.com",
+  "telephone": "+91-9953240031",
+  "email": "info@makario.in",
   "faxNumber": "+91-612-2345678",
   "address": {
     "@type": "PostalAddress",
@@ -206,7 +206,7 @@
   "contactPoint": [
     {
       "@type": "ContactPoint",
-      "telephone": "+91-98765-43210",
+      "telephone": "+91-9953240031",
       "contactType": "sales",
       "areaServed": "IN",
       "availableLanguage": ["English", "Hindi"]
@@ -220,7 +220,7 @@
     },
     {
       "@type": "ContactPoint",
-      "email": "export@biharmakhana.com",
+      "email": "export@makario.in",
       "contactType": "export inquiries",
       "areaServed": "Worldwide"
     }

@@ -16,8 +16,8 @@ const SEO = ({
   title = "Bihar Makhana | Premium Foxnuts Exporter | #1 Organic Lotus Seeds Supplier India",
   description = "🥇 Bihar's #1 Premium Makhana Exporter | 100% Organic Foxnuts | Bulk Orders | Export to 50+ Countries | Best Quality Lotus Seeds | Sustainable Farming | ISO Certified | Free Shipping India",
   keywords = "bihar makhana, foxnuts exporter india, organic lotus seeds, premium makhana bulk order, bihar foxnuts supplier, makhana export company, lotus seeds bihar, organic makhana, foxnuts wholesale, premium quality makhana, makhana manufacturer bihar, lotus seeds exporter, foxnuts bulk supplier, organic foxnuts bihar, makhana direct from farmers, premium lotus seeds india, bihar agricultural products, makhana export quality, foxnuts premium grade, lotus seeds organic farming",
-  canonical = "https://biharmakhana.com",
-  ogImage = "https://biharmakhana.com/images/bihar-makhana-og.jpg",
+  canonical = "https://makario.in",
+  ogImage = "https://makario.in/images/bihar-makhana-og.jpg",
   ogType = "website",
   noindex = false,
   structuredData,
@@ -32,7 +32,7 @@ const SEO = ({
     "isPartOf": {
       "@type": "WebSite",
       "name": "Bihar Makhana",
-      "url": "https://biharmakhana.com"
+      "url": "https://makario.in"
     },
     "about": {
       "@type": "Organization",

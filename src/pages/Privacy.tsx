@@ -63,7 +63,7 @@ const Privacy = () => {
               <h2 className="text-2xl font-semibold mb-4 text-heritage">Contact Us</h2>
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about this Privacy Policy, please contact us at 
-                privacy@makari.com or call +91 98765 43210.
+                privacy@makario.in or call +91 9953240031.
               </p>
             </section>
 

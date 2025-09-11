@@ -15,13 +15,13 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+91 98765 43210", "+91 87654 32109"],
+      details: ["+91 9953240031", "+91 87654 32109"],
       description: "Available 24/7 for urgent inquiries"
     },
     {
       icon: Mail,
       title: "Email Address",
-      details: ["info@makari.com", "export@makari.com"],
+      details: ["info@makario.in", "export@makario.in"],
       description: "We respond within 4 hours"
     },
     {

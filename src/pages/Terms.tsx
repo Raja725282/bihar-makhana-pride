@@ -70,8 +70,8 @@ const Terms = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-heritage">Contact Information</h2>
               <p className="text-muted-foreground leading-relaxed">
-                For questions about these terms, please contact us at legal@makari.com or 
-                call +91 98765 43210.
+                For questions about these terms, please contact us at legal@makario.in or 
+                call +91 9953240031.
               </p>
             </section>
 

@@ -29,11 +29,11 @@ const Header = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 9953240031</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>info@makari.com</span>
+                <span>info@makario.in</span>
               </div>
             </div>
             <div className="text-golden-light">
