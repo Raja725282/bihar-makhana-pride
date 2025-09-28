@@ -24,34 +24,33 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
   const navigate = useNavigate();
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [isToggleingWishlist, setIsTogglingWishlist] = useState(false);
-  const [selectedPack, setSelectedPack] = useState(product.packs?.[0] || null);
 
   // Safety check for product
   if (!product) {
     return (
       <Card className="h-96 flex items-center justify-center">
         <p className="text-muted-foreground">Product data not available</p>
-      </Card>
-    );
-  }
-
-  const handleAddToCart = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsAddingToCart(true);
-    console.log('Add to cart clicked for product:', product.id, selectedPack);
-    
-    // Simulate API call delay for smooth UX
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    // Pass selectedPack info if available
-    addToCart(selectedPack ? { ...product, ...selectedPack } : product);
-    openCart();
-    setIsAddingToCart(false);
-  };
-
-  const handleToggleWishlist = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsTogglingWishlist(true);
+        <div 
+          className={`${viewMode === 'list' ? 'aspect-[4/3]' : 'aspect-square'} overflow-hidden cursor-pointer`}
+          onClick={handleProductClick}
+        >
+          {/** Use img tag for hover swap */}
+          <img
+            src={product.images && product.images.length > 1 ? product.images[0] : product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300"
+            onMouseEnter={e => {
+              if (product.images && product.images.length > 1) {
+                (e.target as HTMLImageElement).src = product.images[1];
+              }
+            }}
+            onMouseLeave={e => {
+              if (product.images && product.images.length > 1) {
+                (e.target as HTMLImageElement).src = product.images[0];
+              }
+            }}
+          />
+        </div>
     console.log('Wishlist toggled for product:', product.id);
     
     // Simulate API call delay for smooth UX
@@ -131,38 +130,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
           className={`${viewMode === 'list' ? 'aspect-[4/3]' : 'aspect-square'} overflow-hidden cursor-pointer`}
           onClick={handleProductClick}
         >
-          <LazyImage
-            src={product.image}
+          <img
+            src={product.images && product.images.length > 1 ? product.images[0] : product.image}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover transition-transform duration-300"
+            onMouseEnter={e => {
+              if (product.images && product.images.length > 1) {
+                (e.target as HTMLImageElement).src = product.images[1];
+              }
+            }}
+            onMouseLeave={e => {
+              if (product.images && product.images.length > 1) {
+                (e.target as HTMLImageElement).src = product.images[0];
+              }
+            }}
           />
         </div>
       </div>
 
       <CardContent className={`${viewMode === 'list' ? 'flex-1' : ''} p-2 md:p-4`}>
-        {/* Pack Options */}
-        {product.packs && product.packs.length > 0 && (
-          <div className="mb-2">
-            <label className="block text-xs font-semibold mb-1 text-primary">Choose Pack:</label>
-            <div className="flex gap-2 flex-wrap">
-              {product.packs.map(pack => (
-                <Button
-                  key={pack.id}
-                  size="sm"
-                  variant={selectedPack?.id === pack.id ? "default" : "outline"}
-                  onClick={e => {
-                    e.stopPropagation();
-                    setSelectedPack(pack);
-                  }}
-                  className="text-xs px-2 py-1"
-                >
-                  {pack.label}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Product Name - Clickable */}
         <h3 
           className={`font-semibold ${viewMode === 'list' ? 'text-base md:text-lg' : 'text-sm md:text-lg'} mb-1 md:mb-2 line-clamp-2 cursor-pointer hover:text-primary transition-colors`}
@@ -190,14 +176,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
 
         {/* Price */}
         <div className="flex items-center gap-1 md:gap-2 mb-2 md:mb-4">
-          <span className={`${viewMode === 'list' ? 'text-xl md:text-2xl' : 'text-lg md:text-2xl'} font-bold text-primary`}>
-            ₹{selectedPack ? selectedPack.price : product.price}
-          </span>
-          {selectedPack && product.originalPrice && selectedPack.price < product.originalPrice ? (
-            <span className="text-xs md:text-sm text-muted-foreground line-through">
-              ₹{product.originalPrice}
-            </span>
-          ) : product.originalPrice && (
+          <span className={`${viewMode === 'list' ? 'text-xl md:text-2xl' : 'text-lg md:text-2xl'} font-bold text-primary`}>₹{product.price}</span>
+          {product.originalPrice && (
             <span className="text-xs md:text-sm text-muted-foreground line-through">
               ₹{product.originalPrice}
             </span>
