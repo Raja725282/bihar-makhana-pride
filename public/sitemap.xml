@@ -205,3 +205,34 @@
     </url>
 
 </urlset>
+    <!-- Product Detail Pages -->
+    <url>
+        <loc>https://www.makario.in/product/100g-pack-1</loc>
+        <lastmod>2025-09-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.makario.in/product/100g-pack-2</loc>
+        <lastmod>2025-09-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.makario.in/product/100g-pack-3</loc>
+        <lastmod>2025-09-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.makario.in/product/100g-pack-4</loc>
+        <lastmod>2025-09-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.makario.in/product/100g-pack-5</loc>
+        <lastmod>2025-09-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
