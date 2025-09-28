@@ -10,13 +10,13 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Our Location",
-      details: ["Darbhanga, Bihar, India", "Pin Code: 846004"],
+      details: ["Falka, Katihar, Bihar, India", "Pin Code: 854114"],
       description: "Heart of makhana cultivation region"
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+91 9953240031", "+91 87654 32109"],
+      details: ["+91 9953240031", "+91 8877092400"],
       description: "Available 24/7 for urgent inquiries"
     },
     {
@@ -64,10 +64,10 @@ const Contact = () => {
             "email": "orders@makario.in",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Darbhanga",
+              "addressLocality": "Katihar",
               "addressRegion": "Bihar", 
               "addressCountry": "IN",
-              "postalCode": "846004"
+              "postalCode": "854114"
             },
             "areaServed": ["Mumbai", "Gujarat", "South India", "Maharashtra", "Karnataka", "Tamil Nadu"],
             "openingHours": "Mo-Su 08:00-20:00",

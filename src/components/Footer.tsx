@@ -72,8 +72,8 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-golden flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
-                  Mithila, Darbhanga<br />
-                  Bihar, India - 846004
+                  Falka, Katihar<br />
+                  Bihar, India - 854114.
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -121,7 +121,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-gray-300">
-              <span>© 2024 Makari - Made with</span>
+              <span>© 2024 ARS Group - Made with</span>
               <Heart className="w-4 h-4 text-golden fill-golden" />
               <span>in Bihar, India</span>
             </div>
