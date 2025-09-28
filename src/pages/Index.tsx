@@ -5,9 +5,12 @@ import ContactForm from "@/components/ContactForm";
 import QuoteForm from "@/components/QuoteForm";
 import SEO from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { ProductList } from "../components/product/ProductList";
+import { FeaturedProductsSection } from "../components/product/FeaturedProductsSection";
+import { getFeaturedProducts } from "../data/products";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Globe, Heart, Shield, Truck, Users, Sprout, Award, Leaf, Target, CheckCircle } from "lucide-react";
+import { Globe, Heart, Shield, Truck, Users, Sprout, Award, Leaf, Target, CheckCircle, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import biharFieldsImage from "@/assets/bihar-fields.jpg";
@@ -121,15 +124,112 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Bihar Makhana | Premium Foxnuts Exporter | #1 Organic Lotus Seeds Supplier India"
-        description="🥇 Bihar's #1 Premium Makhana Exporter | 100% Organic Foxnuts | Bulk Orders | Export to 50+ Countries | Best Quality Lotus Seeds | Sustainable Farming | ISO Certified | Free Shipping India"
-        keywords="bihar makhana exporter, premium foxnuts india, organic lotus seeds bihar, makhana bulk order, foxnuts export company, lotus seeds manufacturer, bihar agricultural products, premium makhana supplier, organic foxnuts wholesale, foxnuts direct from farmers, makhana export quality, bihar lotus seeds, authentic makhana bihar, premium grade foxnuts, organic lotus cultivation bihar"
+        title="Buy Premium Bihar Makhana Online India | #1 Fox Nuts Delivery | Makario"
+        description="� India's #1 Premium Bihar Makhana! ✅ 100% Organic Fox Nuts ✅ Free Delivery Mumbai, Gujarat, South India ✅ COD Available ✅ Same Day Delivery. Order Fresh Healthy Snacks Now!"
+        keywords="buy premium makhana online india, fox nuts delivery mumbai gujarat bangalore chennai, bihar makhana online shopping, organic lotus seeds home delivery, healthy snacks online india, fresh makhana bulk order, premium fox nuts brand, makhana online store india, fox nuts ecommerce, bihar agriculture products online"
         canonical="https://makario.in/"
-        ogImage="https://makario.in/images/bihar-makhana-hero.jpg"
-        structuredData={homePageStructuredData}
+        region="india"
+        ogImage="https://makario.in/images/makario-premium-makhana-india.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Makario",
+          "alternateName": ["Makario Premium Makhana", "Bihar Makhana Pride"],
+          "description": "India's leading premium Bihar makhana delivery service. Fresh fox nuts delivered across Mumbai, Gujarat, Bangalore, Chennai, Hyderabad with same day delivery options.",
+          "url": "https://makario.in",
+          "logo": "https://makario.in/logo.png",
+          "image": [
+            "https://makario.in/images/makario-premium-makhana.jpg",
+            "https://makario.in/images/bihar-makhana-collection.jpg",
+            "https://makario.in/images/organic-fox-nuts-india.jpg"
+          ],
+          "telephone": "+91-9953240031",
+          "email": "orders@makario.in",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Makhana Export Hub, Agriculture Complex",
+            "addressLocality": "Darbhanga",
+            "addressRegion": "Bihar",
+            "postalCode": "846004", 
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "26.1542",
+            "longitude": "85.8918"
+          },
+          "areaServed": [
+            {
+              "@type": "City", 
+              "name": "Mumbai",
+              "containedInPlace": {"@type": "State", "name": "Maharashtra"}
+            },
+            {
+              "@type": "State", 
+              "name": "Gujarat",
+              "containedInPlace": {"@type": "Country", "name": "India"}
+            }, 
+            {
+              "@type": "City", 
+              "name": "Bangalore",
+              "containedInPlace": {"@type": "State", "name": "Karnataka"}
+            },
+            {
+              "@type": "City", 
+              "name": "Chennai",
+              "containedInPlace": {"@type": "State", "name": "Tamil Nadu"}
+            },
+            {
+              "@type": "City", 
+              "name": "Hyderabad",
+              "containedInPlace": {"@type": "State", "name": "Telangana"}
+            }
+          ],
+          "serviceType": "Premium Makhana Delivery Service",
+          "priceRange": "₹₹",
+          "paymentAccepted": ["Cash", "UPI", "Card", "PhonePe", "GPay", "Online Banking"],
+          "deliveryLeadTime": "P1D",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Premium Makhana Products",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Product",
+                  "name": "Premium Grade A+ Makhana",
+                  "category": "Healthy Snacks"
+                },
+                "price": "₹299-899",
+                "priceCurrency": "INR"
+              },
+              {
+                "@type": "Offer", 
+                "itemOffered": {
+                  "@type": "Product",
+                  "name": "Organic Fox Nuts",
+                  "category": "Organic Food"
+                },
+                "price": "₹399-1199",
+                "priceCurrency": "INR"
+              }
+            ]
+          },
+          "sameAs": [
+            "https://www.facebook.com/makario",
+            "https://www.instagram.com/makario_official",
+            "https://twitter.com/makario_india"
+          ]
+        }}
       />
       <Header />
       <Hero />
+      
+      {/* Featured Products Section - Season's Top Picks */}
+      <FeaturedProductsSection 
+        products={getFeaturedProducts()}
+        title="SEASON'S TOP PICKS"
+      />
       
       {/* Features Section */}
       <section className="py-16 bg-muted/30">
@@ -484,6 +584,66 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Regional Delivery Section */}
+      <section className="py-16 bg-heritage text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6">We Deliver Across India</h2>
+            <p className="text-white/90 text-lg max-w-3xl mx-auto">
+              Fresh Bihar makhana delivered to your doorstep across India's major cities. 
+              Same day delivery available in select areas!
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <Link to="/mumbai" className="group">
+              <Card className="bg-white/10 border-white/20 hover:bg-white/20 transition-all duration-300 text-center">
+                <CardContent className="pt-8 pb-6">
+                  <MapPin className="h-12 w-12 text-golden mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Mumbai</h3>
+                  <p className="text-white/80 mb-4">Same day delivery across Mumbai, Thane & Navi Mumbai</p>
+                  <div className="bg-golden text-heritage px-4 py-2 rounded-full font-semibold">
+                    Free Delivery Above ₹500
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+            
+            <Link to="/gujarat" className="group">
+              <Card className="bg-white/10 border-white/20 hover:bg-white/20 transition-all duration-300 text-center">
+                <CardContent className="pt-8 pb-6">
+                  <MapPin className="h-12 w-12 text-golden mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Gujarat</h3>
+                  <p className="text-white/80 mb-4">Ahmedabad, Surat, Vadodara, Rajkot & more</p>
+                  <div className="bg-golden text-heritage px-4 py-2 rounded-full font-semibold">
+                    Next Day Delivery
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+            
+            <Link to="/south-india" className="group">
+              <Card className="bg-white/10 border-white/20 hover:bg-white/20 transition-all duration-300 text-center">
+                <CardContent className="pt-8 pb-6">
+                  <MapPin className="h-12 w-12 text-golden mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">South India</h3>
+                  <p className="text-white/80 mb-4">Bangalore, Chennai, Hyderabad, Kochi</p>
+                  <div className="bg-golden text-heritage px-4 py-2 rounded-full font-semibold">
+                    Express Delivery
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Button size="lg" className="bg-golden hover:bg-golden/90 text-heritage font-semibold">
+              Order Now - Call +91-9953240031
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Bulk Products Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -547,71 +707,94 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Global Presence & SEO Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+      {/* Global Presence & SEO Section - Enhanced */}
+      <section className="py-16 bg-gradient-to-br from-heritage/5 via-golden/5 to-muted/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-golden/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 bg-heritage/20 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6 text-heritage">Bihar Makhana: India's Pride, World's Choice</h2>
-            <p className="text-muted-foreground text-lg max-w-4xl mx-auto">
+            <div className="inline-block mb-4">
+              <span className="text-sm font-semibold text-golden bg-golden/10 px-4 py-2 rounded-full border border-golden/20">
+                🏆 BIHAR'S LEGACY
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold mb-6 text-heritage bg-gradient-to-r from-heritage to-heritage/80 bg-clip-text text-transparent">
+              Bihar Makhana: India's Pride, World's Choice
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-4xl mx-auto leading-relaxed">
               Leading makhana exporter from Bihar, India. Premium quality fox nuts, lotus seeds 
               supplier for global markets. Organic, natural, healthy snacks from Bihar wetlands.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <div className="text-3xl font-bold text-golden mb-2">50+</div>
+            <div className="group text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-golden/20">
+              <div className="text-3xl font-bold text-golden mb-2 group-hover:scale-110 transition-transform duration-300">50+</div>
               <div className="text-heritage font-semibold">Countries</div>
               <div className="text-sm text-muted-foreground">Global Export</div>
+              <div className="w-full h-1 bg-gradient-to-r from-golden/20 to-golden rounded-full mt-3"></div>
             </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <div className="text-3xl font-bold text-golden mb-2">5000+</div>
+            <div className="group text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-golden/20">
+              <div className="text-3xl font-bold text-golden mb-2 group-hover:scale-110 transition-transform duration-300">5000+</div>
               <div className="text-heritage font-semibold">Farmers</div>
               <div className="text-sm text-muted-foreground">Connected Network</div>
+              <div className="w-full h-1 bg-gradient-to-r from-golden/20 to-golden rounded-full mt-3"></div>
             </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <div className="text-3xl font-bold text-golden mb-2">100%</div>
+            <div className="group text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-golden/20">
+              <div className="text-3xl font-bold text-golden mb-2 group-hover:scale-110 transition-transform duration-300">100%</div>
               <div className="text-heritage font-semibold">Organic</div>
               <div className="text-sm text-muted-foreground">Natural Process</div>
+              <div className="w-full h-1 bg-gradient-to-r from-golden/20 to-golden rounded-full mt-3"></div>
             </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-md">
-              <div className="text-3xl font-bold text-golden mb-2">10+</div>
+            <div className="group text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-golden/20">
+              <div className="text-3xl font-bold text-golden mb-2 group-hover:scale-110 transition-transform duration-300">10+</div>
               <div className="text-heritage font-semibold">Years</div>
               <div className="text-sm text-muted-foreground">Export Experience</div>
+              <div className="w-full h-1 bg-gradient-to-r from-golden/20 to-golden rounded-full mt-3"></div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-heritage">Why Bihar Makhana is Best in World</h3>
+            <div className="space-y-4 bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+              <h3 className="text-2xl font-bold text-heritage flex items-center gap-2">
+                <span className="text-2xl">🌾</span>
+                Why Bihar Makhana is Best in World
+              </h3>
               <ul className="space-y-3">
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                <li className="flex items-start space-x-3 group">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                   <span className="text-muted-foreground">Bihar's unique climate and soil conditions</span>
                 </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                <li className="flex items-start space-x-3 group">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                   <span className="text-muted-foreground">Traditional cultivation methods for 1000+ years</span>
                 </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                <li className="flex items-start space-x-3 group">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                   <span className="text-muted-foreground">Highest protein content and nutritional value</span>
                 </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5" />
+                <li className="flex items-start space-x-3 group">
+                  <CheckCircle className="w-5 h-5 text-nature flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                   <span className="text-muted-foreground">Premium size and superior taste quality</span>
                 </li>
               </ul>
             </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-heritage">Global Market Keywords</h3>
+            <div className="space-y-4 bg-white/60 backdrop-blur-sm p-6 rounded-2xl border border-white/50">
+              <h3 className="text-2xl font-bold text-heritage flex items-center gap-2">
+                <span className="text-2xl">🌍</span>
+                Global Market Keywords
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {[
                   "Fox Nuts", "Lotus Seeds", "Makhana Export", "Bihar Makhana",
                   "Premium Makhana", "Organic Fox Nuts", "Indian Superfoods",
                   "Healthy Snacks", "Natural Makhana", "Wholesale Makhana"
                 ].map((keyword, index) => (
-                  <span key={index} className="px-3 py-1 bg-golden/10 text-heritage rounded-full text-sm">
+                  <span key={index} className="px-3 py-1 bg-golden/10 text-heritage rounded-full text-sm border border-golden/20 hover:bg-golden/20 transition-colors duration-200">
                     {keyword}
                   </span>
                 ))}
@@ -621,60 +804,161 @@ const Index = () => {
         </div>
       </section>
 
-      {/* International Markets Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      {/* International Markets Section - Enhanced */}
+      <section className="py-16 bg-gradient-to-br from-white via-golden/5 to-heritage/5 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-1/4 w-16 h-16 bg-golden/30 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-heritage/30 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6 text-heritage">Serving Global Markets</h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            <div className="inline-block mb-4">
+              <span className="text-sm font-semibold text-heritage bg-heritage/10 px-4 py-2 rounded-full border border-heritage/20">
+                🌍 GLOBAL PRESENCE
+              </span>
+            </div>
+            <h2 className="text-4xl font-bold mb-6 text-heritage bg-gradient-to-r from-heritage via-golden/80 to-heritage bg-clip-text text-transparent">
+              Serving Global Markets
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
               From Bihar to the world - we export premium makhana to major international markets 
               including USA, Europe, Middle East, and Asia Pacific regions.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
             {[
-              { country: "🇺🇸 USA", market: "Premium Health Food" },
-              { country: "🇬🇧 UK", market: "Organic Snacks" },
-              { country: "🇩🇪 Germany", market: "Natural Foods" },
-              { country: "🇦🇺 Australia", market: "Superfoods" },
-              { country: "🇨🇦 Canada", market: "Healthy Snacks" },
-              { country: "🇦🇪 UAE", market: "Premium Import" },
-              { country: "🇸🇬 Singapore", market: "Asian Delicacies" },
-              { country: "🇯🇵 Japan", market: "Health Foods" },
-              { country: "🇰🇷 South Korea", market: "Natural Snacks" },
-              { country: "🇳🇱 Netherlands", market: "Organic Products" },
-              { country: "🇫🇷 France", market: "Gourmet Foods" },
-              { country: "🇮🇹 Italy", market: "Premium Ingredients" }
+              { country: "🇺🇸 USA", market: "Premium Health Food", region: "North America" },
+              { country: "🇬🇧 UK", market: "Organic Snacks", region: "Europe" },
+              { country: "🇩🇪 Germany", market: "Natural Foods", region: "Europe" },
+              { country: "🇦🇺 Australia", market: "Superfoods", region: "Oceania" },
+              { country: "🇨🇦 Canada", market: "Healthy Snacks", region: "North America" },
+              { country: "🇦🇪 UAE", market: "Premium Import", region: "Middle East" },
+              { country: "🇸🇬 Singapore", market: "Asian Delicacies", region: "Asia" },
+              { country: "🇯🇵 Japan", market: "Health Foods", region: "Asia" },
+              { country: "🇰🇷 South Korea", market: "Natural Snacks", region: "Asia" },
+              { country: "🇳🇱 Netherlands", market: "Organic Products", region: "Europe" },
+              { country: "🇫🇷 France", market: "Gourmet Foods", region: "Europe" },
+              { country: "🇮🇹 Italy", market: "Premium Ingredients", region: "Europe" }
             ].map((item, index) => (
-              <div key={index} className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-2xl mb-2">{item.country.split(' ')[0]}</div>
-                <div className="font-semibold text-heritage text-sm">{item.country.split(' ')[1]}</div>
-                <div className="text-xs text-muted-foreground mt-1">{item.market}</div>
+              <div key={index} className="group p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-golden/30 hover:-translate-y-1">
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{item.country.split(' ')[0]}</div>
+                <div className="font-semibold text-heritage text-sm mb-1">{item.country.split(' ')[1]}</div>
+                <div className="text-xs text-muted-foreground mb-2">{item.market}</div>
+                <div className="text-xs bg-golden/10 text-golden px-2 py-1 rounded-full border border-golden/20">
+                  {item.region}
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Additional Global Stats */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-8 bg-white/80 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg border border-white/50">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-golden">50+</div>
+                <div className="text-sm text-heritage">Countries</div>
+              </div>
+              <div className="w-px h-8 bg-heritage/20"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-golden">6</div>
+                <div className="text-sm text-heritage">Continents</div>
+              </div>
+              <div className="w-px h-8 bg-heritage/20"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-golden">1000+</div>
+                <div className="text-sm text-heritage">Clients</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-heritage">Ready to Experience Bihar's Finest?</h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Whether you're looking for retail quantities or bulk orders, 
-            we're here to serve you with the finest quality makhana from Bihar.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" onClick={() => setShowQuoteForm(true)}>
-              Request Quote
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/products">View Products</Link>
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => setShowBulkForm(true)}>
-              Get Bulk Quote
-            </Button>
+      {/* CTA Section - Enhanced */}
+      <section className="py-16 bg-gradient-to-br from-heritage/10 via-golden/10 to-muted/30 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-10 right-10 w-32 h-32 bg-golden/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-24 h-24 bg-heritage/30 rounded-full blur-2xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-golden/20 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-block mb-6">
+              <span className="text-sm font-semibold text-golden bg-golden/10 px-6 py-3 rounded-full border border-golden/20 flex items-center gap-2">
+                ✨ PREMIUM EXPERIENCE
+              </span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-heritage bg-gradient-to-r from-heritage via-golden to-heritage bg-clip-text text-transparent leading-tight">
+              Ready to Experience Bihar's Finest?
+            </h2>
+            
+            <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+              Whether you're looking for retail quantities or bulk orders, 
+              we're here to serve you with the finest quality makhana from Bihar.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                onClick={() => setShowQuoteForm(true)}
+                className="group bg-heritage hover:bg-heritage/90 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                Request Quote
+                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                asChild
+                className="group border-2 border-heritage text-heritage hover:bg-heritage hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1"
+              >
+                <Link to="/products">
+                  View Products
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+                </Link>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                onClick={() => setShowBulkForm(true)}
+                className="group border-2 border-golden text-golden hover:bg-golden hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1"
+              >
+                Get Bulk Quote
+                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div className="flex flex-col items-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50">
+                <Shield className="w-8 h-8 text-heritage mb-2" />
+                <span className="text-sm font-semibold text-heritage">Quality Assured</span>
+                <span className="text-xs text-muted-foreground">100% Tested</span>
+              </div>
+              <div className="flex flex-col items-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50">
+                <Truck className="w-8 h-8 text-golden mb-2" />
+                <span className="text-sm font-semibold text-heritage">Fast Delivery</span>
+                <span className="text-xs text-muted-foreground">Worldwide</span>
+              </div>
+              <div className="flex flex-col items-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50">
+                <Heart className="w-8 h-8 text-red-500 mb-2" />
+                <span className="text-sm font-semibold text-heritage">Customer Love</span>
+                <span className="text-xs text-muted-foreground">5000+ Happy</span>
+              </div>
+              <div className="flex flex-col items-center p-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50">
+                <Award className="w-8 h-8 text-heritage mb-2" />
+                <span className="text-sm font-semibold text-heritage">Certified</span>
+                <span className="text-xs text-muted-foreground">Export Quality</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

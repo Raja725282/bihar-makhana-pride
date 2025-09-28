@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, Globe, Users } from "lucide-react";
 
@@ -46,6 +47,39 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contact Makario | Order Makhana Mumbai Gujarat South India | Fox Nuts Delivery | +91-9953240031"
+        description="📞 Contact Makario for premium Bihar makhana delivery! Mumbai, Gujarat, South India. Call +91-9953240031 for orders. WhatsApp available. Same day delivery in select cities!"
+        keywords="contact makario makhana, order fox nuts mumbai, gujarat makhana delivery contact, south india lotus seeds order, makhana phone number, fox nuts whatsapp order, premium makhana contact bihar, healthy snacks order india"
+        canonical="https://makario.in/contact"
+        region="india"
+        ogImage="https://makario.in/images/contact-makario-makhana.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "mainEntity": {
+            "@type": "LocalBusiness",
+            "name": "Makario",
+            "telephone": "+91-9953240031",
+            "email": "orders@makario.in",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Darbhanga",
+              "addressRegion": "Bihar", 
+              "addressCountry": "IN",
+              "postalCode": "846004"
+            },
+            "areaServed": ["Mumbai", "Gujarat", "South India", "Maharashtra", "Karnataka", "Tamil Nadu"],
+            "openingHours": "Mo-Su 08:00-20:00",
+            "paymentAccepted": ["Cash", "UPI", "Card", "PhonePe", "GPay"],
+            "priceRange": "₹₹"
+          }
+        }}
+        breadcrumbs={[
+          { name: "Home", url: "https://makario.in/" },
+          { name: "Contact", url: "https://makario.in/contact" }
+        ]}
+      />
       <Header />
       
       {/* Hero Section */}

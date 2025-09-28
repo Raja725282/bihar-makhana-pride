@@ -7,15 +7,22 @@ import { initWebVitals, initImageOptimization } from "./utils/performance";
 initWebVitals();
 initImageOptimization();
 
-// Hide loading spinner when React app mounts
+// Enhanced loading spinner hide function
 const hideSpinner = () => {
   const spinner = document.getElementById('loading');
   if (spinner) {
-    spinner.style.display = 'none';
+    // Add fade out animation before hiding
+    spinner.style.opacity = '0';
+    spinner.style.transition = 'opacity 0.3s ease-out';
+    setTimeout(() => {
+      spinner.style.display = 'none';
+    }, 300);
   }
 };
 
-createRoot(document.getElementById("root")!).render(<App />);
+// Initialize React app
+const root = createRoot(document.getElementById("root")!);
+root.render(<App />);
 
-// Hide spinner after initial render
+// Hide spinner after initial render with proper timing
 setTimeout(hideSpinner, 100);

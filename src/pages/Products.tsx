@@ -118,15 +118,43 @@ const Products = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Bihar Makhana Products | Premium Foxnuts Varieties | Grade A Lotus Seeds Export"
-        description="Explore premium Bihar makhana products - Grade A, Commercial & Processing grade foxnuts. Export quality lotus seeds with competitive pricing. Bulk orders available. ISO certified organic makhana varieties."
-        keywords="bihar makhana products, premium foxnuts varieties, grade a makhana, commercial grade foxnuts, processing grade lotus seeds, export quality makhana, bulk makhana orders, organic foxnuts bihar, premium lotus seeds, makhana product catalog, foxnuts wholesale varieties, bihar makhana grades"
-        canonical="https://biharmakhana.com/products"
-        ogImage="https://biharmakhana.com/images/makhana-products.jpg"
-        structuredData={productsStructuredData}
+        title="Buy Premium Makhana Online India | Fox Nuts Products Mumbai Gujarat South India | Makario"
+        description="🛒 Premium Bihar Makhana products online! Grade A+, Family Pack, Organic varieties. Free delivery Mumbai, Gujarat, South India. Best fox nuts prices in India. Order now!"
+        keywords="buy makhana online india, fox nuts products online, premium makhana mumbai, gujarat fox nuts delivery, south india makhana online, organic lotus seeds buy, healthy snacks online india, bihar makhana products, fox nuts varieties online, premium makhana delivery"
+        canonical="https://makario.in/products"
+        region="india"
+        ogImage="https://makario.in/images/makhana-products-india.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Premium Makhana Products Collection",
+          "description": "Premium Bihar Makhana products with free delivery across Mumbai, Gujarat, and South India. Grade A+ quality fox nuts at best prices.",
+          "url": "https://makario.in/products",
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 5,
+            "itemListElement": [
+              {
+                "@type": "Product",
+                "position": 1,
+                "name": "Premium Grade A+ Makhana",
+                "description": "Extra large premium fox nuts perfect for snacking and gifting",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "899",
+                  "priceCurrency": "INR", 
+                  "availability": "https://schema.org/InStock",
+                  "url": "https://makario.in/products/premium-grade-a",
+                  "areaServed": ["Mumbai", "Gujarat", "Bangalore", "Chennai", "Hyderabad"],
+                  "deliveryLeadTime": "P1D"
+                }
+              }
+            ]
+          }
+        }}
         breadcrumbs={[
-          { name: "Home", url: "https://biharmakhana.com/" },
-          { name: "Products", url: "https://biharmakhana.com/products" }
+          { name: "Home", url: "https://makario.in/" },
+          { name: "Products", url: "https://makario.in/products" }
         ]}
       />
       <Header />

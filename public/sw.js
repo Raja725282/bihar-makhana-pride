@@ -1,5 +1,5 @@
 // Service Worker for caching and performance
-const CACHE_NAME = 'makario-v1';
+const CACHE_NAME = 'makario-v3';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',

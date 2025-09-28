@@ -18,6 +18,11 @@ Allow: /contact
 Allow: /blog
 Allow: /faq
 Allow: /custom-packaging
+
+# Regional target market pages
+Allow: /mumbai
+Allow: /gujarat
+Allow: /south-india
 Allow: /logistics
 
 # Allow all major search engines

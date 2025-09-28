@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import SEO from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Trophy } from "lucide-react";
@@ -58,6 +59,36 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="About Makario | Premium Bihar Makhana Company Mumbai Gujarat South India | Fox Nuts Story"
+        description="🌾 Discover Makario's journey from Bihar wetlands to India's premium makhana brand. Serving Mumbai, Gujarat, South India with authentic fox nuts. 25+ years of excellence!"
+        keywords="makario about us, bihar makhana company, fox nuts company mumbai, premium makhana brand gujarat, south india makhana supplier, authentic bihar lotus seeds, family business makhana, organic fox nuts bihar, heritage makhana brand"
+        canonical="https://makario.in/about"
+        region="india"
+        ogImage="https://makario.in/images/makario-about-bihar-heritage.jpg"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Makario",
+            "description": "Premium Bihar Makhana company serving Mumbai, Gujarat, and South India with authentic fox nuts since 25+ years",
+            "url": "https://makario.in",
+            "foundingDate": "1990",
+            "foundingLocation": {
+              "@type": "Place",
+              "name": "Bihar, India"
+            },
+            "areaServed": ["Mumbai", "Gujarat", "South India", "Maharashtra", "Karnataka", "Tamil Nadu", "Telangana", "Kerala"],
+            "knowsAbout": ["Makhana Cultivation", "Fox Nuts Processing", "Organic Farming", "Export Quality"],
+            "slogan": "From Bihar's Heritage to Your Health"
+          }
+        }}
+        breadcrumbs={[
+          { name: "Home", url: "https://makario.in/" },
+          { name: "About Us", url: "https://makario.in/about" }
+        ]}
+      />
       <Header />
       
       {/* Hero Section */}
