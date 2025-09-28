@@ -23,10 +23,6 @@ export const Cart: React.FC = () => {
   const navigate = useNavigate();
 
   const handleCheckout = () => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
     navigate('/checkout');
   };
 
@@ -72,7 +68,7 @@ export const Cart: React.FC = () => {
                       {item.product.name}
                     </h3>
                     <p className="text-gray-500 mt-1">
-                      ₹{item.product.price.toLocaleString('en-IN')} per kg
+                      ₹{item.product.price.toLocaleString('en-IN')} per pcs
                     </p>
                     
                     {item.product.discount > 0 && (
@@ -94,7 +90,7 @@ export const Cart: React.FC = () => {
                         </Button>
                         
                         <Badge variant="secondary" className="px-4 py-2 text-base">
-                          {item.quantity} kg
+                          {item.quantity} pcs
                         </Badge>
                         
                         <Button

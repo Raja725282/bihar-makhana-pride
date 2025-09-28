@@ -16,6 +16,9 @@ import LazyImage from '../components/LazyImage';
 
 export const Checkout: React.FC = () => {
   const { items, getTotalPrice, clearCart } = useCart();
+  const [coupon, setCoupon] = useState("");
+  const [couponApplied, setCouponApplied] = useState(false);
+  const [discount, setDiscount] = useState(0);
   const { user } = useAuth();
   const navigate = useNavigate();
   
@@ -51,7 +54,7 @@ export const Checkout: React.FC = () => {
       return;
     }
 
-    setIsProcessing(true);
+  setIsProcessing(true);
     
     // Simulate order processing
     setTimeout(() => {
@@ -61,19 +64,18 @@ export const Checkout: React.FC = () => {
         items: items,
         shippingInfo,
         paymentMethod,
-        total: getTotalPrice() + 50,
+        total: getTotalPrice() + 50 - discount,
         orderDate: new Date().toISOString(),
-        status: 'pending'
+        status: 'pending',
+        coupon: couponApplied ? coupon : null,
+        discount
       };
-      
       // Save order to localStorage (in real app, send to backend)
       const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
       existingOrders.push(order);
       localStorage.setItem('orders', JSON.stringify(existingOrders));
-      
       // Clear cart
       clearCart();
-      
       setOrderPlaced(true);
       setIsProcessing(false);
     }, 2000);
@@ -281,25 +283,59 @@ export const Checkout: React.FC = () => {
               
               <Separator />
               
-              <div className="space-y-2">
+              {/* Coupon Input */}
+              <div className="mb-4">
+                <Label htmlFor="coupon">Discount Coupon</Label>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    id="coupon"
+                    value={coupon}
+                    onChange={e => setCoupon(e.target.value)}
+                    placeholder="Enter coupon code"
+                    disabled={couponApplied}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={couponApplied || !coupon}
+                    onClick={() => {
+                      if (coupon.toUpperCase() === "MAKARIO10") {
+                        setDiscount(Math.round(getTotalPrice() * 0.1));
+                        setCouponApplied(true);
+                      } else {
+                        setDiscount(0);
+                        setCouponApplied(false);
+                        alert("Invalid coupon code");
+                      }
+                    }}
+                  >
+                    {couponApplied ? "Applied" : "Apply"}
+                  </Button>
+                </div>
+                {couponApplied && (
+                  <div className="text-green-600 text-sm mt-2">Coupon applied! You saved ₹{discount}.</div>
+                )}
+              </div>
                 <div className="flex justify-between">
                   <span>Subtotal</span>
                   <span>₹{getTotalPrice().toLocaleString()}</span>
                 </div>
-                
+                {discount > 0 && (
+                  <div className="flex justify-between text-green-600">
+                    <span>Discount</span>
+                    <span>-₹{discount.toLocaleString()}</span>
+                  </div>
+                )}
                 <div className="flex justify-between">
                   <span>Shipping</span>
                   <span>₹50</span>
                 </div>
-                
                 <Separator />
-                
                 <div className="flex justify-between text-lg font-semibold">
                   <span>Total</span>
-                  <span>₹{(getTotalPrice() + 50).toLocaleString()}</span>
+                  <span>₹{(getTotalPrice() + 50 - discount).toLocaleString()}</span>
                 </div>
-              </div>
-              
+              {/* End of order summary content */}
               <Button 
                 onClick={handlePlaceOrder}
                 className="w-full"
@@ -323,4 +359,4 @@ export const Checkout: React.FC = () => {
       <Footer />
     </>
   );
-};
+}

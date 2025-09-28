@@ -34,6 +34,7 @@ const ProductDetail: React.FC = () => {
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [zoomOpen, setZoomOpen] = useState(false);
 
   // Find the product by ID (ensuring both are strings for comparison)
   const product = products.find(p => p.id === id);
@@ -148,7 +149,7 @@ const ProductDetail: React.FC = () => {
           {/* Left Column - Image Gallery */}
           <div className="space-y-4">
             {/* Main Product Image */}
-            <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden border shadow-sm">
+            <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden border shadow-sm cursor-zoom-in" onClick={() => setZoomOpen(true)}>
               <LazyImage
                 src={productImages[selectedImage]}
                 alt={displayProduct.name}
@@ -157,6 +158,17 @@ const ProductDetail: React.FC = () => {
             </div>
 
             {/* Thumbnail Gallery */}
+            {/* Image Zoom Modal */}
+            {zoomOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70" onClick={() => setZoomOpen(false)}>
+                <img
+                  src={productImages[selectedImage]}
+                  alt={displayProduct.name}
+                  className="max-w-3xl max-h-[80vh] rounded-lg shadow-2xl border-4 border-white"
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            )}
             <div className="grid grid-cols-6 gap-2">
               {productImages.map((image, index) => (
                 <button
@@ -298,7 +310,7 @@ const ProductDetail: React.FC = () => {
               <div className="flex gap-4">
                 <Button
                   onClick={handleBuyNow}
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 h-12 text-base font-semibold flex-1"
+                  className="bg-[#FFD700] hover:bg-[#FFC300] text-white px-8 py-3 h-12 text-base font-semibold flex-1"
                   disabled={!displayProduct.inStock}
                 >
                   Buy Now
@@ -307,7 +319,7 @@ const ProductDetail: React.FC = () => {
                 <Button
                   onClick={handleAddToCart}
                   variant="outline"
-                  className="border-2 border-red-600 text-red-600 hover:bg-red-50 px-8 py-3 h-12 text-base font-semibold flex-1"
+                  className="border-2 border-[#FFD700] text-[#FFD700] hover:bg-yellow-50 px-8 py-3 h-12 text-base font-semibold flex-1"
                   disabled={!displayProduct.inStock}
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />
@@ -563,7 +575,7 @@ const ProductDetail: React.FC = () => {
                   
                   <Button 
                     size="sm" 
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-medium"
+                    className="w-full bg-golden hover:bg-golden/90 text-white font-medium"
                     onClick={() => navigate(`/product/${relatedProduct.id}`)}
                   >
                     Buy Now ₹

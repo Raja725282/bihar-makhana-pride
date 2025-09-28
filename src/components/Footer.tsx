@@ -17,7 +17,7 @@ const Footer = () => {
                 className="w-12 h-12 object-contain"
               />
               <div>
-                <h3 className="text-xl font-bold text-golden">Makari</h3>
+                <h3 className="text-xl font-bold text-golden">Makario</h3>
                 <p className="text-sm text-nature">The Pride of Bihar</p>
               </div>
             </div>
@@ -128,8 +128,8 @@ const Footer = () => {
             <div className="flex space-x-6 text-sm">
               <Link to="/privacy" className="text-gray-300 hover:text-golden transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="text-gray-300 hover:text-golden transition-colors">Terms of Service</Link>
-              <Link to="/shipping" className="text-gray-300 hover:text-golden transition-colors">Shipping Policy</Link>
-              <Link to="/refund" className="text-gray-300 hover:text-golden transition-colors">Refund Policy</Link>
+              <Link to="/shipping-policy" className="text-gray-300 hover:text-golden transition-colors">Shipping Policy</Link>
+              <Link to="/refund-policy" className="text-gray-300 hover:text-golden transition-colors">Refund Policy</Link>
             </div>
           </div>
         </div>

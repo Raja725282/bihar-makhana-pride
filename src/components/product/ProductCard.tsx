@@ -23,44 +23,42 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
   const { setLoading } = useLoading();
   const navigate = useNavigate();
   const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const [isToggleingWishlist, setIsTogglingWishlist] = useState(false);
+  const [isTogglingWishlist, setIsTogglingWishlist] = useState(false);
 
   // Safety check for product
   if (!product) {
     return (
       <Card className="h-96 flex items-center justify-center">
         <p className="text-muted-foreground">Product data not available</p>
-        <div 
-          className={`${viewMode === 'list' ? 'aspect-[4/3]' : 'aspect-square'} overflow-hidden cursor-pointer`}
-          onClick={handleProductClick}
-        >
-          {/** Use img tag for hover swap */}
-          <img
-            src={product.images && product.images.length > 1 ? product.images[0] : product.image}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300"
-            onMouseEnter={e => {
-              if (product.images && product.images.length > 1) {
-                (e.target as HTMLImageElement).src = product.images[1];
-              }
-            }}
-            onMouseLeave={e => {
-              if (product.images && product.images.length > 1) {
-                (e.target as HTMLImageElement).src = product.images[0];
-              }
-            }}
-          />
-        </div>
-    console.log('Wishlist toggled for product:', product.id);
-    
-    // Simulate API call delay for smooth UX
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    toggleWishlist(product);
-    if (!isInWishlist(product.id)) {
-      openWishlist();
+      </Card>
+    );
+  }
+  // Handler for toggling wishlist
+  const handleToggleWishlist = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsTogglingWishlist(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      toggleWishlist(product);
+      if (!isInWishlist(product.id)) {
+        openWishlist();
+      }
+    } finally {
+      setIsTogglingWishlist(false);
     }
-    setIsTogglingWishlist(false);
+  };
+
+  // Handler for adding to cart
+  const handleAddToCart = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsAddingToCart(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+      addToCart(product);
+      openCart();
+    } finally {
+      setIsAddingToCart(false);
+    }
   };
 
   const handleBuyNow = (e: React.MouseEvent) => {
@@ -116,9 +114,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
             isWishlisted ? 'text-red-500 hover:text-red-600' : 'text-gray-400 hover:text-red-500'
           }`}
           onClick={handleToggleWishlist}
-          disabled={isToggleingWishlist}
+          disabled={isTogglingWishlist}
         >
-          {isToggleingWishlist ? (
+          {isTogglingWishlist ? (
             <LoadingSpinner size="sm" text="" />
           ) : (
             <Heart className={`h-3 w-3 md:h-4 md:w-4 ${isWishlisted ? 'fill-current' : ''}`} />

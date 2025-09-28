@@ -11,7 +11,7 @@
   <circle cx="24" cy="24" r="22" fill="url(#bgGrad)" stroke="#654321" stroke-width="2"/>
   
   <!-- Letter M -->
-  <text x="24" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#FFFFFF" stroke="#654321" stroke-width="0.5">M</text>
+  <text x="24" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#FFD700" stroke="#B8860B" stroke-width="0.5">M</text>
   
   <!-- Small makhana dots for detail -->
   <circle cx="18" cy="18" r="1.5" fill="#F5F5DC" opacity="0.8"/>

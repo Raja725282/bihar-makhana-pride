@@ -1,5 +1,6 @@
+import ShippingPolicy from "./pages/ShippingPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,8 +21,8 @@ const BulkOrder = lazy(() => import("./pages/BulkOrder"));
 const Products = lazy(() => import("./pages/Products"));
 const Shop = lazy(() => import("./pages/Shop").then(module => ({ default: module.Shop })));
 const Checkout = lazy(() => import("./pages/Checkout").then(module => ({ default: module.Checkout })));
-const Wishlist = lazy(() => import("./pages/Wishlist").then(module => ({ default: module.Wishlist })));
-const CartPage = lazy(() => import("./pages/CartPage").then(module => ({ default: module.CartPage })));
+const Wishlist = lazy(() => import("./pages/Wishlist").then(module => ({ default: module.default })));
+const CartPage = lazy(() => import("./pages/CartPage"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
@@ -73,7 +74,6 @@ const App = () => (
             <CartProvider>
               <WishlistProvider>
                 <Toaster />
-                <Sonner />
                 <BrowserRouter>
                   <RouteLoader>
                     <Routes>
@@ -91,6 +91,8 @@ const App = () => (
                   <Route path="/faq" element={<FAQ />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
+                  <Route path="/shipping" element={<ShippingPolicy />} />
+                  <Route path="/refund" element={<RefundPolicy />} />
                   <Route path="/agriculture" element={<Agriculture />} />
                   <Route path="/global" element={<Global />} />
                   <Route path="/farmers" element={<Farmers />} />
@@ -101,6 +103,7 @@ const App = () => (
                   <Route path="/mumbai" element={<Mumbai />} />
                   <Route path="/gujarat" element={<Gujarat />} />
                   <Route path="/south-india" element={<SouthIndia />} />
+                  <Route path="*" element={<NotFound />} />
                   
                   {/* Admin Routes */}
                   <Route path="/admin/login" element={<AdminLogin />} />

@@ -10,7 +10,7 @@ import LazyImage from '../components/LazyImage';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 
-export const Wishlist: React.FC = () => {
+const Wishlist: React.FC = () => {
   const { items, removeFromWishlist, clearWishlist } = useWishlist();
   const { addToCart, isInCart, getItemQuantity } = useCart();
   const navigate = useNavigate();
@@ -148,3 +148,5 @@ export const Wishlist: React.FC = () => {
     </>
   );
 };
+
+export default Wishlist;

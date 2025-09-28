@@ -111,7 +111,7 @@ const Header = () => {
                 className="w-16 h-16 object-contain"
               />
               <div className="hidden sm:block">
-                <h1 className="text-2xl font-bold text-heritage">Makari</h1>
+                <h1 className="text-2xl font-bold text-heritage">Makario</h1>
                 <p className="text-sm text-nature">The Pride of Bihar</p>
               </div>
             </Link>

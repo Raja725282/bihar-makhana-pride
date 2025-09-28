@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Cart from '../components/CartComponent';
 import SEO from '../components/SEO';
 
-export const CartPage: React.FC = () => {
+const CartPage: React.FC = () => {
   return (
     <>
       <SEO 
@@ -18,3 +18,5 @@ export const CartPage: React.FC = () => {
     </>
   );
 };
+
+export default CartPage;

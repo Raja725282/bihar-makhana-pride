@@ -72,7 +72,7 @@ export const CartSidebar: React.FC = () => {
                         {item.product.name}
                       </h4>
                       <p className="text-sm text-gray-500 mt-1">
-                        ₹{item.product.price.toLocaleString('en-IN')} per kg
+                        ₹{item.product.price.toLocaleString('en-IN')} per pcs
                       </p>
                       
                       <div className="flex items-center justify-between mt-3">
@@ -88,7 +88,7 @@ export const CartSidebar: React.FC = () => {
                           </Button>
                           
                           <Badge variant="secondary" className="px-3 py-1">
-                            {item.quantity} kg
+                            {item.quantity} pcs
                           </Badge>
                           
                           <Button
