@@ -40,6 +40,9 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const Mumbai = lazy(() => import("./pages/Mumbai"));
 const Gujarat = lazy(() => import("./pages/Gujarat"));
 const SouthIndia = lazy(() => import("./pages/SouthIndia"));
+const Login = lazy(() => import("./pages/Login"));
+const UserProfile = lazy(() => import("./pages/UserProfile"));
+const Orders = lazy(() => import("./pages/Orders"));
 
 // Admin Components
 const AdminLogin = lazy(() => import("./components/admin/AdminLogin"));
@@ -98,6 +101,9 @@ const App = () => (
                   <Route path="/farmers" element={<Farmers />} />
                   <Route path="/export-services" element={<ExportServices />} />
                   <Route path="/quality-assurance" element={<QualityAssurance />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/profile" element={<UserProfile />} />
+                  <Route path="/orders" element={<Orders />} />
                   <Route path="/custom-packaging" element={<CustomPackaging />} />
                   <Route path="/logistics" element={<Logistics />} />
                   <Route path="/mumbai" element={<Mumbai />} />

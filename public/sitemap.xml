@@ -204,7 +204,6 @@
         </image:image>
     </url>
 
-</urlset>
     <!-- Product Detail Pages -->
     <url>
         <loc>https://www.makario.in/product/100g-pack-1</loc>
@@ -236,3 +235,4 @@
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
+</urlset>

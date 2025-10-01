@@ -149,12 +149,28 @@ const ProductDetail: React.FC = () => {
           {/* Left Column - Image Gallery */}
           <div className="space-y-4">
             {/* Main Product Image */}
-            <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden border shadow-sm cursor-zoom-in" onClick={() => setZoomOpen(true)}>
-              <LazyImage
-                src={productImages[selectedImage]}
-                alt={displayProduct.name}
-                className="w-full h-full object-contain p-4"
-              />
+            <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden border shadow-sm flex items-center justify-center relative">
+              <button
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow hover:bg-white z-10"
+                onClick={() => setSelectedImage((selectedImage - 1 + productImages.length) % productImages.length)}
+                aria-label="Previous image"
+              >
+                &#8592;
+              </button>
+              <div className="w-full h-full cursor-zoom-in" onClick={() => setZoomOpen(true)}>
+                <LazyImage
+                  src={productImages[selectedImage]}
+                  alt={displayProduct.name}
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
+              <button
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow hover:bg-white z-10"
+                onClick={() => setSelectedImage((selectedImage + 1) % productImages.length)}
+                aria-label="Next image"
+              >
+                &#8594;
+              </button>
             </div>
 
             {/* Thumbnail Gallery */}

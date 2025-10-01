@@ -188,9 +188,15 @@ const Header = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem asChild>
+                      <Link to="/profile">
+                        <User className="h-4 w-4 mr-2" />
+                        Profile
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                       <Link to="/orders">
                         <Package className="h-4 w-4 mr-2" />
-                        My Orders
+                        Order Management
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
