@@ -13,6 +13,8 @@ import { AdminAuthProvider } from "./contexts/AdminAuthContext";
 import RouteLoader from "./components/RouteLoader";
 import GlobalMeta from "./components/GlobalMeta";
 import { lazy } from "react";
+import ChatbotPopup from "./components/ChatbotPopup";
+import MobileBottomMenu from "./components/MobileBottomMenu";
 
 // Lazy load all page components for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -77,9 +79,12 @@ const App = () => (
             <CartProvider>
               <WishlistProvider>
                 <Toaster />
+                <ChatbotPopup />
                 <BrowserRouter>
+                  <MobileBottomMenu />
                   <RouteLoader>
                     <Routes>
+                      {/* Chatbot Popup */}
                   <Route path="/" element={<Index />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/products" element={<Products />} />
