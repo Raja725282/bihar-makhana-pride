@@ -114,9 +114,28 @@ const SEO = ({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.url
+      "item": {
+        "@type": "WebPage",
+        "@id": item.url,
+        "name": item.name,
+        "url": item.url
+      }
     }))
-  } : null;
+  } : {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {
+        "@type": "WebPage",
+        "@id": "https://makario.in/",
+        "name": "Home",
+        "url": "https://makario.in/"
+      }
+    }]
+  };
 
   return (
     <Helmet>

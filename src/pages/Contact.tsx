@@ -10,7 +10,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Our Location",
-      details: ["Falka, Katihar, Bihar, India", "Pin Code: 854114"],
+      details: ["Makario - The Pride Of Bihar", "By ARS GROUP", "Falka, Katihar, Bihar, India - 854114"],
       description: "Heart of makhana cultivation region"
     },
     {
@@ -64,7 +64,8 @@ const Contact = () => {
             "email": "orders@makario.in",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Katihar",
+              "name": "Makario - The Pride Of Bihar, By ARS GROUP",
+              "addressLocality": "Falka, Katihar",
               "addressRegion": "Bihar", 
               "addressCountry": "IN",
               "postalCode": "854114"
@@ -139,8 +140,8 @@ const Contact = () => {
           </div>
           
           <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14430.834312234836!2d85.8962!3d26.1542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed58dce6732867%3A0x4059b3ca66c4ac62!2sDarbhanga%2C%20Bihar!5e0!3m2!1sen!2sin!4v1647875234567!5m2!1sen!2sin"
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.175762453114!2d87.27512247522633!3d25.632291477433427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f01fd73d41dc43%3A0xd88071293759ad87!2sMakario%20-%20The%20Pride%20Of%20Bihar%2C%20By%20ARS%20GROUP!5e0!3m2!1sen!2sin!4v1759741530421!5m2!1sen!2sin"
               width="100%"
               height="400"
               style={{ border: 0 }}

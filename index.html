@@ -496,16 +496,15 @@
       }
     </script>
     
-    <!-- Service Worker Registration - Disabled during development -->
+    <!-- Service Worker Registration -->
     <script>
-      // Temporarily disabled to prevent caching issues
-      // if ('serviceWorker' in navigator) {
-      //   window.addEventListener('load', function() {
-      //     navigator.serviceWorker.register('/sw.js')
-      //       .then(function(registration) {
-      //         console.log('SW registered: ', registration);
-      //       })
-      //       .catch(function(registrationError) {
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('Service Worker registered successfully:', registration);
+            })
+            .catch(function(registrationError) {
       //         console.log('SW registration failed: ', registrationError);
       //       });
       //   });

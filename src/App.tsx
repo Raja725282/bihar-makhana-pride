@@ -15,6 +15,7 @@ import GlobalMeta from "./components/GlobalMeta";
 import { lazy } from "react";
 import ChatbotPopup from "./components/ChatbotPopup";
 import MobileBottomMenu from "./components/MobileBottomMenu";
+import OfferPopup from "./components/OfferPopup";
 
 // Lazy load all page components for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -80,6 +81,7 @@ const App = () => (
               <WishlistProvider>
                 <Toaster />
                 <ChatbotPopup />
+                <OfferPopup />
                 <BrowserRouter>
                   <MobileBottomMenu />
                   <RouteLoader>

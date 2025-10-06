@@ -138,4 +138,4 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
       </div>
     </section>
   );
-};
+}

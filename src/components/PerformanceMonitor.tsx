@@ -19,12 +19,32 @@ const PerformanceMonitor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only show in development
-    if (process.env.NODE_ENV === 'development') {
-      setIsVisible(true);
-      
-      // Monitor performance metrics
-      const measureMetrics = () => {
+    // Enable in both development and production for real user monitoring
+    setIsVisible(true);
+    
+    interface WebVitalMetric {
+      name: string;
+      value: number;
+      id?: string;
+      delta?: number;
+    }
+
+    // Send metrics to Google Analytics
+    const sendToAnalytics = (metric: WebVitalMetric) => {
+      if ((window as any).gtag) {
+        (window as any).gtag('event', 'web_vitals', {
+          event_category: 'Web Vitals',
+          event_label: metric.name,
+          value: Math.round(metric.value),
+          metric_id: metric.id || '',
+          metric_value: metric.value,
+          metric_delta: metric.delta || 0,
+        });
+      }
+    };
+    
+    // Monitor performance metrics
+    const measureMetrics = () => {
         // First Contentful Paint
         const fcpEntry = performance.getEntriesByType('paint').find(
           entry => entry.name === 'first-contentful-paint'
@@ -48,7 +68,13 @@ const PerformanceMonitor: React.FC = () => {
         const lcpObserver = new PerformanceObserver((entryList) => {
           const entries = entryList.getEntries();
           const lastEntry = entries[entries.length - 1];
-          setMetrics(prev => ({ ...prev, lcp: Math.round(lastEntry.startTime) }));
+          const lcp = Math.round(lastEntry.startTime);
+          setMetrics(prev => ({ ...prev, lcp }));
+          sendToAnalytics({
+            name: 'LCP',
+            value: lcp,
+            delta: lastEntry.startTime,
+          });
         });
         
         try {
