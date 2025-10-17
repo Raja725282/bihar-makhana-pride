@@ -93,24 +93,38 @@ const Products = () => {
 
   const productCategories = [
     {
-      title: "Premium Grade A",
-      description: "Largest size, perfect for snacking and gifting",
+      title: "7+ Sutta Makhana",
+      description: "Premium largest size makhana, perfect for high-end snacking and gifting",
       image: "/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
-      features: ["20-25mm size", "Low breakage", "Premium packaging", "Export quality"],
+      features: ["Extra-large size", "Premium quality", "Low breakage", "Export grade"],
       price: "Contact for pricing"
     },
     {
-      title: "Grade B Commercial",
-      description: "Standard size for food processing and bulk orders",
+      title: "5+ Sutta Makhana",
+      description: "Large size premium quality makhana for retail and gifting",
       image: "/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
-      features: ["15-20mm size", "Food grade", "Bulk packaging", "Competitive pricing"],
+      features: ["Large size", "Premium quality", "Retail ready", "Gift packaging available"],
       price: "Contact for pricing"
     },
     {
-      title: "Processing Grade",
-      description: "Perfect for food manufacturing and flavoring",
+      title: "3+ Sutta Makhana",
+      description: "Medium-large size makhana, ideal for regular consumption",
       image: "/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
-      features: ["Mixed sizes", "Industrial use", "Cost effective", "High volume"],
+      features: ["Medium-large size", "Great value", "Regular grade", "Bulk available"],
+      price: "Contact for pricing"
+    },
+    {
+      title: "3 Sutta Makhana",
+      description: "Standard size makhana suitable for daily use",
+      image: "/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
+      features: ["Standard size", "Economic choice", "Daily consumption", "Bulk packs"],
+      price: "Contact for pricing"
+    },
+    {
+      title: "Standard Loose Makhana",
+      description: "Mixed size makhana for processing and commercial use",
+      image: "/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png",
+      features: ["Mixed sizes", "Cost-effective", "Bulk quantities", "Processing grade"],
       price: "Contact for pricing"
     }
   ];

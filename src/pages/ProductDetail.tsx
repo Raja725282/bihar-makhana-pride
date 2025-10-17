@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useWishlist } from '../contexts/WishlistContext';
+import fssaiLogo from "../assets/1707841493fssai-logo-png.png";
+import makeInIndiaLogo from "../assets/Make-in-India.png";
 import { products } from '../data/products';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -283,6 +285,27 @@ const ProductDetail: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <div className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                   <span>High protein, low calorie, naturally gluten-free</span>
+                </div>
+              </div>
+
+              {/* Certifications */}
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center space-x-3">
+                    <img 
+                      src={fssaiLogo} 
+                      alt="FSSAI Certified" 
+                      className="h-8 w-auto object-contain"
+                    />
+                    <img 
+                      src={makeInIndiaLogo} 
+                      alt="Make in India" 
+                      className="h-8 w-auto object-contain"
+                    />
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    FSSAI certified & proudly Made in India
+                  </div>
                 </div>
               </div>
             </div>
