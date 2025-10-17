@@ -10,6 +10,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { AuthModal } from "./auth/AuthModal";
 import CartSidebar from "./CartSidebar";
 import WishlistSidebar from "./WishlistSidebar";
+import makarioLogo from "../assets/Makario png Logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,7 +82,7 @@ const Header = () => {
       {/* Top Bar */}
       <div className="bg-heritage text-white py-2 hidden md:block">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center text-sm">
+          <div className="flex justify-between items-center">
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
@@ -92,9 +93,6 @@ const Header = () => {
                 <span>info@makario.in</span>
               </div>
             </div>
-            <div className="text-golden-light">
-              Premium Quality Makhana - Direct from Bihar
-            </div>
           </div>
         </div>
       </div>
@@ -103,28 +101,40 @@ const Header = () => {
       <header className="bg-white/98 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-golden/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png" 
-                alt="Makari - The Pride of Bihar" 
-                className="w-16 h-16 object-contain"
-              />
-              <div className="hidden sm:block">
-                <h1 className="text-2xl font-bold text-heritage">Makario</h1>
-                <p className="text-sm text-nature">The Pride of Bihar</p>
-              </div>
-            </Link>
+            {/* Mobile Menu Button - Left */}
+            <div className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-heritage"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+
+            {/* Logo - Center for mobile, Left for desktop */}
+            <div className="flex-1 flex justify-center lg:justify-start lg:w-1/4">
+              <Link to="/" className="flex items-center">
+                <div className="bg-black rounded-lg p-1 lg:p-1.5">
+                  <img 
+                    src={makarioLogo} 
+                    alt="Makario" 
+                    className="h-8 w-auto lg:h-12 object-contain"
+                  />
+                </div>
+              </Link>
+            </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center justify-center flex-1 space-x-6">
               {navigation.map((item) => (
                 item.isDropdown ? (
                   <DropdownMenu key={item.name}>
                     <DropdownMenuTrigger asChild>
                       <Button 
                         variant="ghost" 
-                        className="text-sm font-medium text-heritage hover:text-golden"
+                        className="text-sm font-medium text-heritage hover:text-golden whitespace-nowrap"
                       >
                         {item.name}
                       </Button>
@@ -143,7 +153,7 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-golden ${
+                    className={`text-sm font-medium transition-colors hover:text-golden whitespace-nowrap ${
                       isActive(item.href)
                         ? "text-golden"
                         : "text-heritage"
@@ -155,11 +165,16 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* E-commerce Actions */}
-            <div className="hidden md:flex items-center space-x-4">
+            {/* Mobile and Desktop E-commerce Actions */}
+            <div className="flex items-center space-x-2 md:space-x-4 lg:w-1/4 lg:justify-end">
               {/* Wishlist */}
-              <Button variant="ghost" size="sm" onClick={openWishlist} className="relative">
-                <Heart className="h-5 w-5" />
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={openWishlist} 
+                className="relative bg-golden/10 hover:bg-golden/20 transition-all duration-200 hover:scale-105"
+              >
+                <Heart className="h-5 w-5 text-golden" />
                 {wishlistItems.length > 0 && (
                   <Badge variant="destructive" className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs">
                     {wishlistItems.length}
@@ -168,8 +183,13 @@ const Header = () => {
               </Button>
 
               {/* Cart */}
-              <Button variant="ghost" size="sm" onClick={openCart} className="relative">
-                <ShoppingCart className="h-5 w-5" />
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={openCart} 
+                className="relative bg-golden/10 hover:bg-golden/20 transition-all duration-200 hover:scale-105"
+              >
+                <ShoppingCart className="h-5 w-5 text-golden" />
                 {getTotalItems() > 0 && (
                   <Badge variant="destructive" className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs">
                     {getTotalItems()}
@@ -181,9 +201,13 @@ const Header = () => {
               {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm">
-                      <User className="h-5 w-5 mr-2" />
-                      {user.name}
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="bg-golden/10 hover:bg-golden/20 transition-all duration-200 hover:scale-105"
+                    >
+                      <User className="h-5 w-5 text-golden" />
+                      <span className="hidden md:inline md:ml-2">{user.name}</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -213,21 +237,19 @@ const Header = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Button variant="outline" size="sm" onClick={() => setShowAuthModal(true)}>
-                  Login
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => setShowAuthModal(true)}
+                  className="bg-golden/10 hover:bg-golden/20 transition-all duration-200 hover:scale-105"
+                >
+                  <User className="h-5 w-5 text-golden" />
+                  <span className="hidden md:inline md:ml-2 text-golden">Login</span>
                 </Button>
               )}
             </div>
 
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden text-heritage"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+
           </div>
 
           {/* Mobile Navigation */}

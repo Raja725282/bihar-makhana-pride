@@ -3,6 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin, Heart, Glo
 import { Button } from "@/components/ui/button";
 import fssaiLogo from "../assets/1707841493fssai-logo-png.png";
 import makeInIndiaLogo from "../assets/Make-in-India.png";
+import makarioLogo from "../assets/Makario png Logo.png";
 
 const Footer = () => {
   return (
@@ -12,16 +13,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
+            <div className="bg-black rounded-lg p-3 inline-block">
               <img 
-                src="/lovable-uploads/be26238e-2161-40dd-afd9-e69df2853b49.png" 
-                alt="Makari - The Pride of Bihar" 
-                className="w-12 h-12 object-contain"
+                src={makarioLogo} 
+                alt="Makario" 
+                className="h-20 w-auto object-contain"
               />
-              <div>
-                <h3 className="text-xl font-bold text-golden">Makario</h3>
-                <p className="text-sm text-nature">The Pride of Bihar</p>
-              </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               Bihar's finest makhana, cultivated with traditional wisdom and delivered 

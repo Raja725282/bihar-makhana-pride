@@ -16,12 +16,13 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
   title = "SEASON'S TOP PICKS",
   className = "" 
 }) => {
+  // Mobile carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  // Show 5 products at a time on desktop
-  const productsPerPage = 5;
-  const maxIndex = Math.max(0, products.length - productsPerPage);
+  // Mobile: Show 4 products at a time (2x2 grid), total 8 products in 2 slides
+  const productsPerGroup = 4;
+  const maxIndex = 1; // Fixed to 2 slides for 8 products
 
   const handlePrevious = () => {
     if (isScrolling) return;
@@ -59,73 +60,76 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
           </p>
         </div>
         <div className="relative max-w-7xl mx-auto">
-          {/* Desktop View - 5 products in a row */}
-          <div className="hidden lg:block">
-            <div className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentIndex * 20}%)`,
-                width: `${(products.length / 5) * 100}%`
-              }}>
-              {products.map((product, index) => (
-                <div key={product.id} className="px-3 flex-shrink-0" style={{ width: `${100 / products.length}%` }}>
-                  <FeaturedProductCard product={product} />
-                </div>
-              ))}
-            </div>
-            {/* Navigation Buttons - Only on Desktop */}
-            {products.length > productsPerPage && (
-              <>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-lg border-0 hover:bg-gray-50 disabled:opacity-50 hidden lg:flex"
-                  onClick={handlePrevious}
-                  disabled={currentIndex === 0 || isScrolling}
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white shadow-lg border-0 hover:bg-gray-50 disabled:opacity-50 hidden lg:flex"
-                  onClick={handleNext}
-                  disabled={currentIndex === maxIndex || isScrolling}
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </Button>
-              </>
-            )}
+          {/* Desktop View - Grid Layout */}
+          <div className="hidden lg:grid grid-cols-4 gap-6">
+            {products.slice(0, 8).map((product) => (
+              <FeaturedProductCard key={product.id} product={product} />
+            ))}
           </div>
+
           {/* Tablet View - 3 products in a row */}
           <div className="hidden md:block lg:hidden">
             <div className="grid grid-cols-3 gap-4">
-              {products.slice(0, 6).map((product) => (
+              {products.slice(0, 8).map((product) => (
                 <FeaturedProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
-          {/* Mobile View - Carousel Slider, 1 row, small cards */}
-          <div className="block md:hidden">
-            <div className="flex overflow-x-auto gap-3 px-2 py-2 hide-scrollbar" style={{ WebkitOverflowScrolling: 'touch' }}>
-              {products.map((product) => (
-                <div key={product.id} className="min-w-[140px] max-w-[150px] flex-shrink-0">
-                  <FeaturedProductCard product={product} small />
-                </div>
-              ))}
+
+          {/* Mobile View - 2 Row Carousel */}
+          <div className="block md:hidden relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {/* Show all 8 products in 2 slides, 4 products (2x2) per slide */}
+                {Array.from({ length: 2 }).map((_, groupIndex) => (
+                  <div key={groupIndex} className="w-full flex-shrink-0 px-2">
+                    <div className="grid grid-cols-2 gap-3">
+                      {products.slice(groupIndex * 4, (groupIndex + 1) * 4).slice(0, 8).map((product) => (
+                        <div key={product.id} className="mb-3">
+                          <FeaturedProductCard product={product} small />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          {/* Dots Indicator - Only on Desktop */}
-          {products.length > productsPerPage && (
-            <div className="hidden lg:flex justify-center mt-8 gap-2">
-              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            
+            {/* Mobile Navigation Buttons */}
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/80 shadow-lg border-0 hover:bg-white"
+              onClick={handlePrevious}
+              disabled={currentIndex === 0 || isScrolling}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/80 shadow-lg border-0 hover:bg-white"
+              onClick={handleNext}
+              disabled={currentIndex === Math.ceil(products.length / 4) - 1 || isScrolling}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+
+            {/* Mobile Dots Indicator */}
+            <div className="flex justify-center mt-4 gap-1.5">
+              {Array.from({ length: Math.ceil(products.length / 4) }).map((_, index) => (
                 <button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === index ? 'bg-gray-900 w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 
+                    ${currentIndex === index ? 'bg-gray-900 w-4' : 'bg-gray-300'}`}
                   onClick={() => !isScrolling && setCurrentIndex(index)}
                 />
               ))}
             </div>
-          )}
+          </div>
         </div>
         <div className="text-center mt-12">
           <Button asChild size="lg" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105">
