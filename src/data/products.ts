@@ -1,7 +1,12 @@
 // Import product images
-import productFront from '../assets/product Front.jpg';
-import productBack from '../assets/Product Back.jpg';
-import productFrontBack from '../assets/Product FRONT BACK.jpg';
+import productImage1 from '../assets/product/1760353406527.jpg';
+import productFront from '../assets/product/FRONT.jpg';
+import productBack from '../assets/product/BACK.jpg';
+import productImage105 from '../assets/product/image-105.png';
+import productImage117 from '../assets/product/image-117.png';
+import productImage146 from '../assets/product/image-146.png';
+import productImage152 from '../assets/product/image-152.png';
+import productImage168 from '../assets/product/image-168.png';
 
 export interface Product {
   id: string;
@@ -35,8 +40,8 @@ export const products: Product[] = [
     name: 'Makhana 100g Pack of 1',
     description: 'Fresh and crunchy makhana, 100g pack of 1. Perfect for solo snacking.',
     price: 125,
-    image: productFront,
-  images: [productFront, productBack, productFrontBack],
+    image: productImage105,
+    images: [productImage105, productImage117, productImage146],
     category: 'Classic Makhana',
     inStock: true,
     stockQuantity: 3,
@@ -51,8 +56,8 @@ export const products: Product[] = [
     name: 'Makhana 100g Pack of 5',
     description: 'Premium Makhana, 100g pack. Pack of 5 for family and bulk snacking.',
     price: 560,
-    image: productFront,
-  images: [productFront, productBack, productFrontBack],
+    image: productImage117,
+    images: [productImage117, productImage146, productImage152],
     category: 'Classic Makhana',
     inStock: true,
     stockQuantity: 5,
@@ -67,8 +72,8 @@ export const products: Product[] = [
     name: 'Makhana 100g Pack of 2',
     description: 'Premium Makhana, 100g pack. Pack of 2.',
     price: 230,
-    image: productFront,
-  images: [productFront, productBack, productFrontBack],
+    image: productImage146,
+    images: [productImage146, productImage152, productImage168],
     category: 'Classic Makhana',
     inStock: true,
     stockQuantity: 8,
@@ -83,8 +88,8 @@ export const products: Product[] = [
     name: 'Makhana 100g Pack of 3',
     description: 'Premium Makhana, 100g pack. Pack of 3.',
     price: 340,
-    image: productFront,
-  images: [productFront, productBack, productFrontBack],
+    image: productImage152,
+    images: [productImage152, productImage168, productImage1],
     category: 'Classic Makhana',
     inStock: true,
     stockQuantity: 4,
@@ -99,8 +104,8 @@ export const products: Product[] = [
     name: 'Makhana 100g Pack of 4',
     description: 'Premium Makhana, 100g pack. Pack of 4.',
     price: 450,
-    image: productFront,
-  images: [productFront, productBack, productFrontBack],
+    image: productImage168,
+    images: [productImage168, productFront, productBack],
     category: 'Classic Makhana',
     inStock: true,
     stockQuantity: 7,
