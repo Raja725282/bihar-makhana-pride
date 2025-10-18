@@ -57,7 +57,7 @@ const Header = () => {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Shop", href: "/shop" },
+    { name: "Shop", href: "/shop", isHot: true },
     { name: "About", href: "/about" },
     { name: "Products", href: "/products" },
     { 
@@ -153,13 +153,18 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-golden whitespace-nowrap ${
+                    className={`text-sm font-medium transition-colors hover:text-golden whitespace-nowrap relative ${
                       isActive(item.href)
                         ? "text-golden"
                         : "text-heritage"
                     }`}
                   >
                     {item.name}
+                    {item.isHot && (
+                      <span className="absolute -top-3 -right-6 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-pulse">
+                        HOT
+                      </span>
+                    )}
                   </Link>
                 )
               ))}
@@ -276,7 +281,7 @@ const Header = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`block px-3 py-2 text-sm font-medium transition-colors hover:text-golden ${
+                    className={`block px-3 py-2 text-sm font-medium transition-colors hover:text-golden relative ${
                       isActive(item.href)
                         ? "text-golden bg-accent"
                         : "text-heritage"
@@ -284,6 +289,11 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
+                    {item.isHot && (
+                      <span className="absolute top-2 left-12 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-pulse">
+                        HOT
+                      </span>
+                    )}
                   </Link>
                 )
               ))}
