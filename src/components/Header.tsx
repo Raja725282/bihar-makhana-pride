@@ -161,7 +161,7 @@ const Header = () => {
                   >
                     {item.name}
                     {item.isHot && (
-                      <span className="absolute -top-3 -right-6 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-pulse">
+                      <span className="absolute -top-2.5 -right-6 bg-red-500 text-white text-[9px] font-bold px-1.5 leading-[14px] rounded-full animate-pulse">
                         HOT
                       </span>
                     )}
@@ -290,7 +290,7 @@ const Header = () => {
                   >
                     {item.name}
                     {item.isHot && (
-                      <span className="absolute top-2 left-12 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-pulse">
+                      <span className="absolute top-2.5 left-12 bg-red-500 text-white text-[9px] font-bold px-1.5 leading-[14px] rounded-full animate-pulse">
                         HOT
                       </span>
                     )}
