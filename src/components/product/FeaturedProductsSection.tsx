@@ -61,8 +61,8 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
         </div>
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop View - Grid Layout */}
-          <div className="hidden lg:grid grid-cols-4 gap-6">
-            {products.slice(0, 8).map((product) => (
+          <div className="hidden lg:grid grid-cols-5 gap-4">
+            {products.slice(0, 10).map((product) => (
               <FeaturedProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -70,7 +70,7 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
           {/* Tablet View - 3 products in a row */}
           <div className="hidden md:block lg:hidden">
             <div className="grid grid-cols-3 gap-4">
-              {products.slice(0, 8).map((product) => (
+              {products.slice(0, 10).map((product) => (
                 <FeaturedProductCard key={product.id} product={product} />
               ))}
             </div>
@@ -83,11 +83,11 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {/* Show all 8 products in 2 slides, 4 products (2x2) per slide */}
-                {Array.from({ length: 2 }).map((_, groupIndex) => (
+                {/* Show all 10 products in 3 slides */}
+                {Array.from({ length: 3 }).map((_, groupIndex) => (
                   <div key={groupIndex} className="w-full flex-shrink-0 px-2">
                     <div className="grid grid-cols-2 gap-3">
-                      {products.slice(groupIndex * 4, (groupIndex + 1) * 4).slice(0, 8).map((product) => (
+                      {products.slice(groupIndex * 4, (groupIndex + 1) * 4).slice(0, 10).map((product) => (
                         <div key={product.id} className="mb-3">
                           <FeaturedProductCard product={product} small />
                         </div>
