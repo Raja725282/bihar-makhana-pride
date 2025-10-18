@@ -9,6 +9,7 @@ import { useLoading } from '../../contexts/LoadingContext';
 import { Heart, ShoppingBag, Star, Eye } from 'lucide-react';
 import LazyImage from '../LazyImage';
 import { useNavigate } from 'react-router-dom';
+import { StockAlert } from './StockAlert';
 
 interface FeaturedProductCardProps {
   product: Product;
@@ -148,6 +149,11 @@ export const FeaturedProductCard: React.FC<FeaturedProductCardProps> = ({ produc
         >
           {product.name}
         </h3>
+
+        {/* Stock Alert */}
+        {product.stockQuantity <= 10 && (
+          <StockAlert stockQuantity={product.stockQuantity} />
+        )}
 
         {/* Rating */}
         <div className={`flex items-center gap-1 ${small ? '' : 'md:gap-2'}`}>

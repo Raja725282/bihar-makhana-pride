@@ -27,6 +27,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LazyImage from '../components/LazyImage';
 import SEO from '../components/SEO';
+import { StockAlert } from '../components/product/StockAlert';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -255,6 +256,13 @@ const ProductDetail: React.FC = () => {
                 </span>
               </div>
               
+              {/* Stock Alert */}
+              {displayProduct.stockQuantity <= 10 && (
+                <div className="mb-4">
+                  <StockAlert stockQuantity={displayProduct.stockQuantity} />
+                </div>
+              )}
+
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span className="text-green-600 font-medium">In Stock</span>
