@@ -23,13 +23,13 @@ export const StockAlert: React.FC<StockAlertProps> = ({ stockQuantity }) => {
 
   const getMessage = () => {
     if (stockQuantity <= 3) {
-      return `Hurry! Only ${stockQuantity} left in stock`;
+      return `Hurry! Only ${stockQuantity} left`;
     }
     if (stockQuantity <= 5) {
-      return `Limited Stock! Only ${stockQuantity} remaining`;
+      return `Only ${stockQuantity} left in stock`;
     }
     if (stockQuantity <= 10) {
-      return `Selling Fast! ${stockQuantity} items left`;
+      return `${stockQuantity} items remaining`;
     }
     return '';
   };
@@ -38,13 +38,13 @@ export const StockAlert: React.FC<StockAlertProps> = ({ stockQuantity }) => {
   if (!message) return null;
 
   return (
-    <div className={`flex items-center gap-2 px-3 py-2 rounded-md border ${getAlertStyle()} mt-2`}>
+    <div className={`flex items-center gap-1.5 px-2 py-1.5 rounded border ${getAlertStyle()} mt-1.5`}>
       {stockQuantity <= 3 ? (
-        <AlertCircle className="w-4 h-4" />
+        <AlertCircle className="w-3 h-3 md:w-3.5 md:h-3.5" />
       ) : (
-        <Clock className="w-4 h-4" />
+        <Clock className="w-3 h-3 md:w-3.5 md:h-3.5" />
       )}
-      <p className="text-sm font-medium">{message}</p>
+      <p className="text-xs md:text-[13px] font-medium leading-tight">{message}</p>
     </div>
   );
 };

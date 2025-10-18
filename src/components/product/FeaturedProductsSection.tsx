@@ -20,9 +20,9 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  // Mobile: Show 4 products at a time (2x2 grid), total 8 products in 2 slides
-  const productsPerGroup = 4;
-  const maxIndex = 1; // Fixed to 2 slides for 8 products
+  // Mobile: Show 2 products per slide in a single row
+  const productsPerSlide = 2;
+  const maxIndex = Math.ceil(products.length / productsPerSlide) - 1;
 
   const handlePrevious = () => {
     if (isScrolling) return;
@@ -76,20 +76,20 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
             </div>
           </div>
 
-          {/* Mobile View - 2 Row Carousel */}
+          {/* Mobile View - Single Row Carousel */}
           <div className="block md:hidden relative">
             <div className="overflow-hidden">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                {/* Show all 10 products in 3 slides */}
-                {Array.from({ length: 3 }).map((_, groupIndex) => (
+                {/* Show 2 products per slide */}
+                {Array.from({ length: Math.ceil(products.length / 2) }).map((_, groupIndex) => (
                   <div key={groupIndex} className="w-full flex-shrink-0 px-2">
-                    <div className="grid grid-cols-2 gap-3">
-                      {products.slice(groupIndex * 4, (groupIndex + 1) * 4).slice(0, 10).map((product) => (
+                    <div className="grid grid-cols-2 gap-4">
+                      {products.slice(groupIndex * 2, (groupIndex + 1) * 2).map((product) => (
                         <div key={product.id} className="mb-3">
-                          <FeaturedProductCard product={product} small />
+                          <FeaturedProductCard product={product} />
                         </div>
                       ))}
                     </div>
@@ -102,30 +102,31 @@ export const FeaturedProductsSection: React.FC<FeaturedProductsSectionProps> = (
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/80 shadow-lg border-0 hover:bg-white"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-white hover:border-gray-300"
               onClick={handlePrevious}
               disabled={currentIndex === 0 || isScrolling}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-6 h-6" />
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white/80 shadow-lg border-0 hover:bg-white"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 hover:bg-white hover:border-gray-300"
               onClick={handleNext}
-              disabled={currentIndex === Math.ceil(products.length / 4) - 1 || isScrolling}
+              disabled={currentIndex === maxIndex || isScrolling}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-6 h-6" />
             </Button>
 
             {/* Mobile Dots Indicator */}
-            <div className="flex justify-center mt-4 gap-1.5">
-              {Array.from({ length: Math.ceil(products.length / 4) }).map((_, index) => (
+            <div className="flex justify-center mt-6 gap-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                 <button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 
-                    ${currentIndex === index ? 'bg-gray-900 w-4' : 'bg-gray-300'}`}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 
+                    ${currentIndex === index ? 'bg-gray-900 w-5' : 'bg-gray-300 hover:bg-gray-400'}`}
                   onClick={() => !isScrolling && setCurrentIndex(index)}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
