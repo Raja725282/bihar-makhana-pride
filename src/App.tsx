@@ -39,6 +39,7 @@ const QualityAssurance = lazy(() => import("./pages/QualityAssurance"));
 const CustomPackaging = lazy(() => import("./pages/CustomPackaging"));
 const Logistics = lazy(() => import("./pages/Logistics"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Mumbai = lazy(() => import("./pages/Mumbai"));
 const Gujarat = lazy(() => import("./pages/Gujarat"));
@@ -98,6 +99,7 @@ const App = () => (
                   <Route path="/bulk-order" element={<BulkOrder />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:id" element={<BlogPost />} />
                   <Route path="/faq" element={<FAQ />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />

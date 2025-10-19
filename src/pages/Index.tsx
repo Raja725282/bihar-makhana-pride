@@ -7,6 +7,7 @@ import SEO from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { ProductList } from "../components/product/ProductList";
 import { FeaturedProductsSection } from "../components/product/FeaturedProductsSection";
+import BlogSection from "@/components/BlogSection";
 import { getFeaturedProducts } from "../data/products";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -256,6 +257,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Blog Section */}
+      <BlogSection />
 
       {/* Bihar Heritage Section */}
       <section className="py-16">
