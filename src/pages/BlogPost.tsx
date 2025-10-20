@@ -436,12 +436,49 @@ const BlogPost = () => {
       
       <Header />
       
+      {/* Hero Section */}
+      <section 
+        className="relative h-[60vh] min-h-[400px] flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${blogPost.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        <div className="container mx-auto px-4 relative z-10 text-center text-white">
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-block px-4 py-2 bg-golden/20 text-golden rounded-full text-sm font-semibold mb-6">
+              {blogPost.category}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              {blogPost.title}
+            </h1>
+            <div className="flex items-center justify-center space-x-4 text-white/90">
+              <div className="flex items-center">
+                <img 
+                  src={blogPost.authorImage} 
+                  alt={blogPost.author}
+                  className="w-10 h-10 rounded-full mr-3"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://source.unsplash.com/100x100?person,profile';
+                  }}
+                />
+                <span>{blogPost.author}</span>
+              </div>
+              <span>•</span>
+              <time>{blogPost.date}</time>
+              <span>•</span>
+              <span>{blogPost.readTime}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <article className="max-w-4xl mx-auto px-4 py-12">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {blogPost.title}
-          </h1>
-          
+        <header className="mb-8">
           <div className="flex items-center justify-center space-x-4 text-gray-600">
             <div className="flex items-center">
               <img 

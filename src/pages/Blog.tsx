@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
+import makhanaHealthBlog from '../assets/blog/Makhana-The-Healthy-Indian-Snack.jpg';
+import makhanaHeritageBlog from '../assets/blog/makhana-feature.jpg';
+import makhanaProcessBlog from '../assets/blog/Roasted-Makhana-Recipe.webp';
+import makhanaRecipesBlog from '../assets/blog/recipie.webp';
+import heroBg from '../assets/blog/makhana-feature.jpg';
 
 const Blog = () => {
   const blogPosts = [
@@ -13,7 +18,7 @@ const Blog = () => {
       id: 1,
       title: "Health Benefits of Bihar Makhana: The Ultimate Superfood Guide",
       excerpt: "Discover why makhana is considered a superfood and how Bihar's premium quality foxnuts can boost your health and wellness journey.",
-      image: "/images/makhana-health-benefits.jpg",
+      image: makhanaHealthBlog,
       author: "Dr. Nutrition Expert",
       date: "2025-09-10",
       category: "Health & Nutrition",
@@ -24,7 +29,7 @@ const Blog = () => {
       id: 2,
       title: "Sustainable Makhana Farming in Bihar: Traditional Methods Meet Modern Technology",
       excerpt: "Learn about the sustainable farming practices used in Bihar's makhana cultivation and how traditional methods are preserved while embracing innovation.",
-      image: "/images/sustainable-makhana-farming.jpg",
+      image: makhanaHeritageBlog,
       author: "Agricultural Expert",
       date: "2025-09-08",
       category: "Agriculture",
@@ -35,7 +40,7 @@ const Blog = () => {
       id: 3,
       title: "Global Export Trends: Why Bihar Makhana is Conquering International Markets",
       excerpt: "Explore the growing international demand for Bihar makhana and how this superfood is making its mark in global health food markets.",
-      image: "/images/global-makhana-export.jpg",
+      image: makhanaProcessBlog,
       author: "Export Analyst",
       date: "2025-09-05",
       category: "Export & Trade",
@@ -46,7 +51,7 @@ const Blog = () => {
       id: 4,
       title: "From Farm to Fork: The Complete Journey of Bihar Makhana Processing",
       excerpt: "Take a detailed look at the entire process of makhana cultivation, harvesting, processing, and packaging that ensures premium quality.",
-      image: "/images/makhana-processing-journey.jpg",
+      image: makhanaRecipesBlog,
       author: "Processing Expert",
       date: "2025-09-03",
       category: "Processing",
@@ -57,7 +62,7 @@ const Blog = () => {
       id: 5,
       title: "Makhana Recipes: Creative Ways to Enjoy Bihar's Premium Foxnuts",
       excerpt: "Discover delicious and healthy recipes using premium Bihar makhana that will transform your snacking and cooking experience.",
-      image: "/images/makhana-recipes.jpg",
+      image: makhanaHealthBlog,
       author: "Chef Expert",
       date: "2025-09-01",
       category: "Recipes",
@@ -68,7 +73,7 @@ const Blog = () => {
       id: 6,
       title: "Bihar Makhana vs. World: Quality Comparison and Why Bihar Leads",
       excerpt: "A comprehensive comparison of makhana quality across different regions and why Bihar makhana stands superior in the global market.",
-      image: "/images/bihar-makhana-comparison.jpg",
+      image: makhanaHeritageBlog,
       author: "Quality Analyst",
       date: "2025-08-28",
       category: "Quality",
@@ -128,14 +133,35 @@ const Blog = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-hero text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section 
+        className="relative py-32 text-white"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6 text-white">Bihar Makhana Blog</h1>
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+            <span className="inline-block px-4 py-2 bg-golden/20 text-golden rounded-full text-sm font-semibold mb-6">
+              LATEST INSIGHTS
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+              Bihar Makhana Blog
+            </h1>
+            <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl mx-auto">
               Expert insights on premium foxnuts, sustainable farming, health benefits, and industry trends
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" variant="default" className="bg-golden hover:bg-golden/90">
+                Latest Articles
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-heritage">
+                Subscribe to Updates
+              </Button>
+            </div>
           </div>
         </div>
       </section>
